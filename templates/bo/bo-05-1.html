@@ -1,0 +1,82 @@
+<!-- bo-05-1.html -->
+{% include "bo/bo-header.html" %}
+
+
+    <!-- Right / Body -->
+    <div class="tm-main">
+        <div class="uk-container-full uk-position-relative">
+
+
+            <!-- title -->
+            <div uk-margin class="uk-flex uk-flex-row uk-flex-between">
+                <div class="uk-text-blue">
+                    <h4>알림</h4>
+                    <a href="/bo-05"><span uk-icon="icon: chevron-left" class="uk-margin-right"></span>목록</a>
+                </div>
+                <div>
+                </div>
+            </div>
+            
+            <!-- view -->
+            <div class="uk-margin-large-top">
+                <!-- 문의 -->
+                <div>
+                    <table class="uk-table uk-table-divider uk-table-justify">
+                        <thead class="br-t-3">
+                            <tr>
+                                <th class="w-200">알림일시</th>
+                                <th id="alarm_time"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>고객사</td>
+                                <td id="company_name"></td>
+                            </tr>
+                            <tr>
+                                <td>프로젝트</td>
+                                <td id="project_name"></td>
+                            </tr>
+                            <tr>
+                                <td>설치지점</td>
+                                <td id="place_name"></td>
+                            </tr>
+                            <tr>
+                                <td>센서그룹</td>
+                                <td id="sensorgroup_name"></td>
+                            </tr>
+                            <tr>
+                                <td>센서</td>
+                                <td><h5 id="sensor_display_name"></h5></td>
+                            </tr>
+                            <tr>
+                                <td>내용</td>
+                                <td><h5 id="alarm_detail"></h5></td>
+                            </tr>
+                            <tr class="br-b-3">
+                                <td>URL</td>
+                                <td><a href="#" id="sensor_url"></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- function -->
+                <div class="uk-flex uk-flex-row uk-flex-between uk-margin-large-top">
+                    <div>
+                    </div>
+                    <div>
+                        <button class="uk-button uk-button-primary" onclick="location.href='/bo-05'">List</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <!--// Right / Body -->
+
+<script src="/static/js/bo/bo-05-1.js"></script>
+</body>
+
+</html>

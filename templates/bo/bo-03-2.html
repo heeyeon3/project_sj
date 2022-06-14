@@ -1,0 +1,182 @@
+<!-- bo-03-2.html -->
+{% include "bo/bo-header.html" %}
+
+
+    <!-- Right / Body -->
+    <div class="tm-main">
+        <div class="uk-container-full uk-position-relative" style="margin-top: 30px;">
+
+
+            <!-- title -->
+            <div uk-margin class="uk-flex uk-flex-row uk-flex-between">
+                <div class="uk-text-blue">
+                    
+                    <h4>고객사 정보</h4>
+                    <a href="/bo-03" id="locatop"><span uk-icon="icon: chevron-left" class="uk-margin-right"></span>성진지오텍</a>
+                </div>
+                <div>
+                </div>
+            </div>
+
+            <!-- 고객사 계정 정보 form -->
+            <div class="uk-margin-large-top">
+                <form class="uk-form-horizontal uk-margin-large" id="company_info">
+                    <h5>고객사 계정 정보</h5>
+                    <hr>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="">고객사 </label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="company_set_id" name="company_set_id" type="text" placeholder="">
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="">고객사 계정 ID</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="user_id" name="user_id" type="text" placeholder="">
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="">고객사 계정 비밀번호</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="user_pwd" name="user_pwd" type="text" placeholder="">
+                        </div>
+                    </div>
+                    <hr>
+                </form>
+            </div>
+
+            <!-- 사업자 정보 form -->
+            <div class="uk-margin-large-top">
+                <form class="uk-form-horizontal uk-margin-large" id="company_info_detail">
+                    <h5>사업자 정보</h5>
+                    <hr>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="">상호</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="company_name" name="company_name" type="text" placeholder="">
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="">대표자</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="company_ceo" name="company_ceo" type="text" placeholder="">
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="">사업자등록번호</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="company_regnum" name="company_regnum" type="text" placeholder="">
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="">업태</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="company_worktype" name="company_worktype" type="text" placeholder="">
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="">종목</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="company_workcate" name="company_workcate" type="text" placeholder="">
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="">수신 이메일</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="company_email" name="company_email" type="text" placeholder="">
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="">대표번호</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="company_number" name="company_number" type="text" placeholder="">
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="">팩스번호</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="company_faxnum" name="company_faxnum" type="text" placeholder="">
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="">주소</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input"  id="company_address" name="company_address" type="text" placeholder="">
+                        </div>
+                    </div>
+                    <hr>
+                </form>
+            </div>
+
+            <!-- 담당자 정보 form -->
+            <div class="uk-margin-large-top">
+                <form class="uk-form-horizontal uk-margin-large" id="manager_info">
+                    <h5>담당자 정보</h5>
+                    <hr>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="">이름</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="company_picname" name="company_picname" type="text" placeholder="">
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="">연락처</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="company_picnum" name="company_picnum" type="text" placeholder="">
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="">이메일</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="company_picemail" name="company_picemail" type="text" placeholder="">
+                        </div>
+                    </div>
+                    <hr>
+                </form>
+            </div>
+
+            <!-- 고객사 배경 이미지 form -->
+            <!-- <div class="uk-margin-large-top">
+                <form class="uk-form-horizontal uk-margin-large">
+                    <h5>배경 이미지</h5>
+                    <hr>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="">배경 이미지 파일</label>
+                        <div class="pd-l-15" uk-form-custom="target: true">
+                            <input type="file" id="company_img" name="company_img">
+                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Select file" disabled>
+                            
+                        </div>
+                        <span style="margin-left: 10px;" id="filename"></span>
+                      
+                    </div>
+                    <hr>
+                </form>
+            </div> -->
+
+            <!-- function -->
+            <div class="uk-flex uk-flex-row uk-flex-between uk-margin-large-top">
+                <div>
+                </div>
+                <div>
+                    <button class="uk-button uk-button-default" id="btn_cancle">Cancel</button>
+                    <button class="uk-button uk-button-primary"  id="btn_save">Save</button>
+                    <!-- <button class="uk-button uk-button-primary" onclick="location.href='/bo-03-1'" id="btn_save">Save</button> -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--// Right / Body -->
+
+    <script>
+        function btn() {
+          alert("마스터 계정이 수정되었습니다.");
+          window.location = '/bo-02';
+      }
+  </script>
+   <script src="/static/js/bo/bo-03-2.js"></script>
+
+</body>
+
+</html>

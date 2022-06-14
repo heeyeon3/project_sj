@@ -1,0 +1,64 @@
+<!-- bo-08-1.html -->
+{% include "bo/bo-header.html" %}
+
+
+
+    <!-- Right / Body -->
+    <div class="tm-main">
+        <div class="uk-container-full uk-position-relative">
+
+
+            <!-- title -->
+            <div uk-margin class="uk-flex uk-flex-row uk-flex-between">
+                <div class="uk-text-blue">
+                    <h4>마스터 계정 설정</h4>
+                    <a href="/bo-02"><span uk-icon="icon: chevron-left" class="uk-margin-right"></span>대시보드</a>
+                </div>
+                <div>
+                </div>
+            </div>
+            
+            <hr>
+
+            <!-- account -->
+            <div class="uk-child-width-expand@s uk-margin-large" uk-grid>
+                <div class="uk-flex uk-flex-column uk-flex-middle">
+                    <h5>마스터 계정 설정</h5>
+                    <div class="uk-margin">
+                        <div class="uk-inline">
+                            <span class="uk-form-icon icon-b05" uk-icon="icon: user"></span>
+                            <input class="uk-input bg-w br-0" type="text" id="id" style="color: #000 !important;" readonly value={{current_user.user_id}}>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <div class="uk-inline">
+                            <span class="uk-form-icon icon-b05" uk-icon="icon: lock"></span>
+                            <input class="uk-input bg-w br-0" type="text" id="pwd" style="color: #000 !important;" value={{current_user.user_pwd}}>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+
+            <!-- function -->
+            <div class="uk-flex uk-flex-row uk-flex-between uk-margin-large-top">
+                <div>
+
+                </div>
+                <div>
+                    <button class="uk-button uk-button-default" onclick="location.href='/bo-02'">Cancel</button>
+                    <button class="uk-button uk-button-primary" id='user_put'>Ok</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--// Right / Body -->
+
+    <script src="/static/js/bo/bo-08-1.js"></script>
+
+
+</body>
+
+</html>

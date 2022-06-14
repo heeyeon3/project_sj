@@ -1,0 +1,296 @@
+<!-- ws-04-1.html -->
+{% include "ws/ws-header.html" %}
+{% include "ws/ws-leftmenu.html" %}
+
+
+    <!-- Right / Body -->
+    <div class="tm-main">
+        <div class="uk-container-full uk-position-relative">
+
+            <!-- title -->
+            <div>
+                <h4 class="uk-heading-divider" id="topsensername"></h4>
+            </div>
+
+            <!-- date & time picker -->
+            <div class="uk-margin uk-flex uk-flex-left uk-flex-row">
+                <div>
+                    <span class="ft-w" style="line-height: 40px;">Data Filter</span>
+                </div>
+                <div class="uk-margin-left">
+                    <div class="uk-inline">
+                        <span class="uk-form-icon uk-icon" uk-icon="icon: calendar"><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M 2,3 2,17 18,17 18,3 2,3 Z M 17,16 3,16 3,8 17,8 17,16 Z M 17,7 3,7 3,4 17,4 17,7 Z"></path><rect width="1" height="3" x="6" y="2"></rect><rect width="1" height="3" x="13" y="2"></rect></svg></span>
+                        <input class="uk-input" type="text" id="date_time_start">
+                    </div>
+                </div>
+                <div class="uk-margin-left">
+                    <div class="uk-inline">
+                        <span class="uk-form-icon uk-icon" uk-icon="icon: calendar"><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M 2,3 2,17 18,17 18,3 2,3 Z M 17,16 3,16 3,8 17,8 17,16 Z M 17,7 3,7 3,4 17,4 17,7 Z"></path><rect width="1" height="3" x="6" y="2"></rect><rect width="1" height="3" x="13" y="2"></rect></svg></span>
+                        <input class="uk-input" type="text" id="date_time_end">
+                    </div>
+                </div>
+                <div class="uk-margin-left">
+                    <span style="line-height: 40px;"></span>
+                </div>
+                <div class="uk-margin-left">
+                    <select class="uk-select w-100" id="time">
+                        <option selected="" value="">시각</option>
+                        <option value="01">1시</option>
+                        <option value="02">2시</option>
+                        <option value="03">3시</option>
+                        <option value="04">4시</option>
+                        <option value="05">5시</option>
+                        <option value="06">6시</option>
+                        <option value="07">7시</option>
+                        <option value="08">8시</option>
+                        <option value="09">9시</option>
+                        <option value="10">10시</option>
+                        <option value="11">11시</option>
+                        <option value="12">12시</option>
+                        <option value="13">13시</option>
+                        <option value="14">14시</option>
+                        <option value="15">15시</option>
+                        <option value="16">16시</option>
+                        <option value="17">17시</option>
+                        <option value="18">18시</option>
+                        <option value="19">19시</option>
+                        <option value="20">20시</option>
+                        <option value="21">21시</option>
+                        <option value="22">22시</option>
+                        <option value="23">23시</option>
+                        <option value="00">24시</option>
+                    </select>
+                </div>
+                <div class="">
+                    <span style="line-height: 40px;"></span>
+                </div>
+                <div class="uk-margin-left">
+                    <select class="uk-select w-100" id="intervalday">
+                        <option selected="" value="">평균</option>
+                        <option value="1">1일</option>
+                        <option value="2">2일</option>
+                        <option value="3">3일</option>
+                        <option value="4">4일</option>
+                        <option value="5">5일</option>
+                        <option value="6">6일</option>
+                        <option value="7">7일</option>
+                        <option value="8">8일</option>
+                        <option value="9">9일</option>
+                        <option value="10">10일</option>
+                        <option value="11">11일</option>
+                        <option value="12">12일</option>
+                        <option value="13">13일</option>
+                        <option value="14">14일</option>
+                        <option value="15">15일</option>
+                    </select>
+                </div>
+                <div class="uk-margin-left">
+                   <button class="uk-button uk-button-primary" type="button" onclick="searchdata()">Apply</button>
+                   <button class="uk-button uk-button-primary" type="button" onclick="resetbtn()">Reset</button>
+                </div>
+            </div>
+
+            <!-- tap menu / sensor group - line type (load cell)-->
+            <div class="uk-margin uk-margin-medium-top">
+                <ul class="uk-tab">
+                    <li><a id="linechart" onclick="chartlocation()">Line Chart</a></li>
+                    <li><a id="timelinechart" onclick="timelinelocation()">Timeline Chart</a></li>
+                    <li><a id="data" onclick="datalocation()">Data<span class="uk-badge-orange" style="display: none;" id="dataalarm">231</span></a></li>
+                    <li id="fomulali" style="display: none;"  class="uk-active"><a id="formula_btn" style="display: none;" onclick="fomulalocation()">Formula</a></li>
+                    <li><a id="info" onclick="infolocation()">Info</a></li>
+                </ul>
+            </div>
+
+            <!-- state -->
+            <div uk-margin="" class="uk-flex uk-flex-row uk-flex-between">
+                <div class="uk-text-blue uk-first-column">
+                    <!-- <h4>변화량 (mm)</h4> -->
+                    <p class="mg-v-0" id="sensorgroupinitail">Initial Date: </p>
+                    <!-- <p class="mg-v-0">Gauge Factor: </p> -->
+                </div>
+                <div>
+                    <a class="uk-button uk-button-default" href="#formula" uk-toggle="" aria-expanded="false" id="funcionmanage">변위공식 추가</a>
+                </div>
+            </div>
+
+            <!-- table -->
+            <div class="uk-overflow-auto uk-margin-medium-top data-tb">
+                <table class="uk-table uk-table-small uk-table-divider fml-lh js-filter">
+                    <thead>
+                        <tr>
+                            <th class="w-40">No.</th>
+                            <th class="uk-width-medium">변위공식명</th>
+                            <th>변위공식</th>
+                            <th class="w-120"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbltbody">
+                        <!-- <tr data-state="done">
+                            <td>1</td>
+                            <td><label><input class="uk-radio uk-margin-right" type="radio" name="radio2" checked="">변형각(˚)</label></td>
+                            <td><input class="uk-input" type="text" placeholder="$Sen-# - $Sen-02-iniial" disabled=""></td>
+                            <td>
+                                <a href="http://emagine.kr/sj/ws-02-1-16.html" class="uk-icon-button uk-margin-small-right uk-icon" uk-icon="file-edit"><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="#000" d="M18.65,1.68 C18.41,1.45 18.109,1.33 17.81,1.33 C17.499,1.33 17.209,1.45 16.98,1.68 L8.92,9.76 L8,12.33 L10.55,11.41 L18.651,3.34 C19.12,2.87 19.12,2.15 18.65,1.68 L18.65,1.68 L18.65,1.68 Z"></path><polyline fill="none" stroke="#000" points="16.5 8.482 16.5 18.5 3.5 18.5 3.5 1.5 14.211 1.5"></polyline></svg></a>
+                                <a href="http://emagine.kr/sj/ws-02-1-16.html" class="uk-icon-button uk-margin-small-right uk-icon" uk-icon="trash"><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><polyline fill="none" stroke="#000" points="6.5 3 6.5 1.5 13.5 1.5 13.5 3"></polyline><polyline fill="none" stroke="#000" points="4.5 4 4.5 18.5 15.5 18.5 15.5 4"></polyline><rect x="8" y="7" width="1" height="9"></rect><rect x="11" y="7" width="1" height="9"></rect><rect x="2" y="3" width="16" height="1"></rect></svg></a>     
+                            </td>
+                        </tr>
+                        <tr data-state="done">
+                            <td>2</td>
+                            <td><label><input class="uk-radio uk-margin-right" type="radio" name="radio2">변화량 1 (MM)</label></td>
+                            <td><input class="uk-input" type="text" placeholder="$Sen-# - $Sen-02-iniial" disabled=""></td>
+                            <td>
+                                <a href="http://emagine.kr/sj/ws-02-1-16.html#formula" class="uk-icon-button uk-margin-small-right uk-icon" uk-icon="file-edit" uk-toggle="" aria-expanded="false"><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="#000" d="M18.65,1.68 C18.41,1.45 18.109,1.33 17.81,1.33 C17.499,1.33 17.209,1.45 16.98,1.68 L8.92,9.76 L8,12.33 L10.55,11.41 L18.651,3.34 C19.12,2.87 19.12,2.15 18.65,1.68 L18.65,1.68 L18.65,1.68 Z"></path><polyline fill="none" stroke="#000" points="16.5 8.482 16.5 18.5 3.5 18.5 3.5 1.5 14.211 1.5"></polyline></svg></a>
+                                <a href="http://emagine.kr/sj/ws-02-1-16.html" class="uk-icon-button uk-margin-small-right uk-icon" uk-icon="trash"><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><polyline fill="none" stroke="#000" points="6.5 3 6.5 1.5 13.5 1.5 13.5 3"></polyline><polyline fill="none" stroke="#000" points="4.5 4 4.5 18.5 15.5 18.5 15.5 4"></polyline><rect x="8" y="7" width="1" height="9"></rect><rect x="11" y="7" width="1" height="9"></rect><rect x="2" y="3" width="16" height="1"></rect></svg></a>     
+                            </td>
+                        </tr>
+                        <tr data-state="done">
+                            <td>3</td>
+                            <td><label><input class="uk-radio uk-margin-right" type="radio" name="radio2">변화량 2 (MM)</label></td>
+                            <td><input class="uk-input" type="text" placeholder="$Sen-# - $Sen-02-iniial" disabled=""></td>
+                            <td>
+                                <a href="http://emagine.kr/sj/ws-02-1-16.html#formula" class="uk-icon-button uk-margin-small-right uk-icon" uk-icon="file-edit" uk-toggle="" aria-expanded="false"><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="#000" d="M18.65,1.68 C18.41,1.45 18.109,1.33 17.81,1.33 C17.499,1.33 17.209,1.45 16.98,1.68 L8.92,9.76 L8,12.33 L10.55,11.41 L18.651,3.34 C19.12,2.87 19.12,2.15 18.65,1.68 L18.65,1.68 L18.65,1.68 Z"></path><polyline fill="none" stroke="#000" points="16.5 8.482 16.5 18.5 3.5 18.5 3.5 1.5 14.211 1.5"></polyline></svg></a>
+                                <a href="http://emagine.kr/sj/ws-02-1-16.html" class="uk-icon-button uk-margin-small-right uk-icon" uk-icon="trash"><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><polyline fill="none" stroke="#000" points="6.5 3 6.5 1.5 13.5 1.5 13.5 3"></polyline><polyline fill="none" stroke="#000" points="4.5 4 4.5 18.5 15.5 18.5 15.5 4"></polyline><rect x="8" y="7" width="1" height="9"></rect><rect x="11" y="7" width="1" height="9"></rect><rect x="2" y="3" width="16" height="1"></rect></svg></a>     
+                            </td>
+                        </tr>
+                        <tr data-state="done">
+                            <td>4</td>
+                            <td><label><input class="uk-radio uk-margin-right" type="radio" name="radio2">변화량 3 (MM)</label></td>
+                            <td><input class="uk-input" type="text" placeholder="$Sen-# - $Sen-02-iniial" disabled=""></td>
+                            <td>
+                                <a href="http://emagine.kr/sj/ws-02-1-16.html#formula" class="uk-icon-button uk-margin-small-right uk-icon" uk-icon="file-edit" uk-toggle="" aria-expanded="false"><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="#000" d="M18.65,1.68 C18.41,1.45 18.109,1.33 17.81,1.33 C17.499,1.33 17.209,1.45 16.98,1.68 L8.92,9.76 L8,12.33 L10.55,11.41 L18.651,3.34 C19.12,2.87 19.12,2.15 18.65,1.68 L18.65,1.68 L18.65,1.68 Z"></path><polyline fill="none" stroke="#000" points="16.5 8.482 16.5 18.5 3.5 18.5 3.5 1.5 14.211 1.5"></polyline></svg></a>
+                                <a href="http://emagine.kr/sj/ws-02-1-16.html" class="uk-icon-button uk-margin-small-right uk-icon" uk-icon="trash"><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><polyline fill="none" stroke="#000" points="6.5 3 6.5 1.5 13.5 1.5 13.5 3"></polyline><polyline fill="none" stroke="#000" points="4.5 4 4.5 18.5 15.5 18.5 15.5 4"></polyline><rect x="8" y="7" width="1" height="9"></rect><rect x="11" y="7" width="1" height="9"></rect><rect x="2" y="3" width="16" height="1"></rect></svg></a>     
+                            </td>
+                        </tr>
+                        <tr data-state="done">
+                            <td>5</td>
+                            <td><label><input class="uk-radio uk-margin-right" type="radio" name="radio2"></label></td>
+                            <td><input class="uk-input" type="text" placeholder="" disabled=""></td>
+                            <td>
+                                <a href="http://emagine.kr/sj/ws-02-1-16.html#formula" class="uk-icon-button uk-margin-small-right uk-icon" uk-icon="file-edit" uk-toggle="" aria-expanded="false"><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="#000" d="M18.65,1.68 C18.41,1.45 18.109,1.33 17.81,1.33 C17.499,1.33 17.209,1.45 16.98,1.68 L8.92,9.76 L8,12.33 L10.55,11.41 L18.651,3.34 C19.12,2.87 19.12,2.15 18.65,1.68 L18.65,1.68 L18.65,1.68 Z"></path><polyline fill="none" stroke="#000" points="16.5 8.482 16.5 18.5 3.5 18.5 3.5 1.5 14.211 1.5"></polyline></svg></a>
+                                <a href="http://emagine.kr/sj/ws-02-1-16.html" class="uk-icon-button uk-margin-small-right uk-icon" uk-icon="trash"><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><polyline fill="none" stroke="#000" points="6.5 3 6.5 1.5 13.5 1.5 13.5 3"></polyline><polyline fill="none" stroke="#000" points="4.5 4 4.5 18.5 15.5 18.5 15.5 4"></polyline><rect x="8" y="7" width="1" height="9"></rect><rect x="11" y="7" width="1" height="9"></rect><rect x="2" y="3" width="16" height="1"></rect></svg></a>     
+                            </td>
+                        </tr> -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- function -->
+            <div class="uk-flex uk-flex-row uk-flex-between uk-margin-large-top">
+                <div></div>
+                <div>
+                    <button class="uk-button uk-button-primary" onclick="savebtn()" id="fomulasensorsave"  style="display: none;">Save</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--// Right / Body -->
+    
+
+    <!-- Modal / formula-->
+    <div id="formula" uk-modal>
+        <div class="uk-modal-dialog">
+            <button class="uk-modal-close-default" type="button" uk-close></button>
+            <div class="uk-modal-header">
+                <h5 class="uk-modal-title">Sensor</h5>
+                <p class="uk-text-meta">
+                    <!-- D1-01-ME-01-1(4m) -->
+                </p>
+            </div>
+            <div class="uk-modal-body">
+                <fieldset class="uk-fieldset">
+
+                    <div class="uk-margin">
+                        <select class="uk-select" id="fomulas">
+                            <option>변위공식 불러오기</option>
+                            <!-- <option>변화량(mm)</option>
+                            <option>변형각(˚)</option> -->
+                        </select>
+                    </div>
+
+                    <div class="uk-margin">
+                        <input class="uk-input" type="text" placeholder="변화량(mm)" id="fomulaname">
+                    </div>
+
+                    <div class="uk-margin">
+                        <textarea class="uk-textarea" rows="5" placeholder="$Sen-01 * 100%" style="resize: none;" id="calc"></textarea>
+                        <table border="1" class="calc" style="width: 100%;">
+                         
+                            <tr>
+                                <td colspan="2" onclick="caclulation('AC')">AC</td>
+
+                                <td onclick="caclulation('(')">(</td>
+                                <td onclick="caclulation(')')">)</td>
+                                <td onclick="caclulation('pi')">pi</td>
+                                <td onclick="caclulation('.')">.</td>
+                            </tr>
+                            <tr>
+                                <td onclick="caclulation('1')">1</td>
+                                <td onclick="caclulation('2')">2</td>
+                                <td onclick="caclulation('3')">3</td>
+                                <td class="calcpadding" onclick="caclulation('*')">*</td>
+                                <td class="calcpadding" onclick="caclulation('cos')">cos</td>
+                                <td class="calcpadding" onclick="caclulation('^')">a^b</td>
+                            </tr>
+                            <tr>
+                                <td onclick="caclulation('4')">4</td>
+                                <td onclick="caclulation('5')">5</td>
+                                <td onclick="caclulation('6')">6</td>
+                                <td onclick="caclulation('-')">-</td>
+                                <td onclick="caclulation('sin')">sin</td>
+                                <td onclick="caclulation('e')">e</td>
+                            </tr>
+                            <tr>
+                                <td class="calcpadding" onclick="caclulation('7')">7</td>
+                                <td class="calcpadding"  onclick="caclulation('8')">8</td>
+                                <td class="calcpadding" onclick="caclulation('9')">9</td>
+                                <td onclick="caclulation('+')">+</td>
+                                <td onclick="caclulation('tan')">tan</td>
+                                <td onclick="caclulation('log')">log</td>
+                            </tr>
+                            <tr>
+                                <td onclick="caclulation('0')">0</td>
+
+                                <td onclick="caclulation('$sen')">$sen</td>
+                                <td onclick="caclulation('$ini')">$ini</td>
+                                <td onclick="caclulation('$GF')">$GF</td>
+                                <td onclick="caclulation('/')">/</td>
+                                <td onclick="check_function('edit')">=</td>
+                            </tr>
+                        </table>
+                
+                
+                </div>
+
+                <div class="uk-margin-medium-top">
+                    <p>측정값 변수 : $sen </p>
+                    <p>초기값 변수 : $ini </p>
+                    <p>Gauge Factor : $GF </p>
+                    <p>계산 결과값 :  <span id='test_result'>0</span>  <br/>($sen=2500, $ini=2510, Gauge Factor=0.002) </p>
+        
+                </div>
+                    
+                </fieldset>
+            </div>
+            <div class="uk-modal-footer uk-text-right">
+                <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+                <button class="uk-button uk-button-primary" type="button" id="formulaeditbtn">Save</button>
+                <button class="uk-button uk-button-primary" type="button" id="formuladsavebtn">Save</button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- date & time picker -->
+    <script>
+        $('#date_time_start').datetimepicker({theme:'dark', step:60, format:'Y.m.d H:i', maxDate:'0'});
+        $('#date_time_end').datetimepicker({theme:'dark', step:60, format:'Y.m.d H:i', maxDate:'0'});
+        $('#initial_datetime').datetimepicker({theme:'dark', step:60, format:'Y.m.d H:i', maxDate:'0'});
+    </script>
+    <script src="/static/js/ws/ws-02-1-16.js"></script>
+
+
+</body></html>

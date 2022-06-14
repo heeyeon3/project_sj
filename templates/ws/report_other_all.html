@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=1240">
+    <meta name="description" content="Total Monitoring System"/>
+
+    <title>GEODATA | TMS</title>
+    <link rel="shortcut icon" href="/static/img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/static/img/favicon.ico" type="image/x-icon">
+
+    <script src="/static/plugins/js/uikit.min.js"></script>
+    <script src="/static/plugins/js/uikit-icons.min.js"></script>
+    <script src="/static/plugins/js/chart.min.js"></script>
+    <script src="/static/plugins/js/chartjs-plugin-annotation.js"></script>
+    <script src="/static/plugins/js/jquery.js"></script>
+    <script src="/static/plugins/js/jquery.datetimepicker.full.min.js"></script>
+
+    <script src="/static/plugins/js/html2canvas.js"></script>
+    <script src="/static/plugins/js/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<style>
+    @media print{    
+            .no-print, .no-print * {display: none !important;}
+            .second_table {margin-top : 0px !important; page-break-before : always}
+        }
+
+
+    @page{size:auto; margin:5mm;} @page{size:auto; margin:5mm;}
+
+    /* .top { width: 230mm; margin: 0 auto; margin-bottom: 200px;} */
+    body { width: 230mm; margin: 0 auto; margin-bottom: 200px;}
+    input { border: none; font-size: 20px; width: calc(100% - 120px);}
+    label { display: inline-block; width: 100px; padding: 10px 0;}
+    footer { height: 80px; width: 100%; text-align: center; padding-top: 100px;}
+    table { width: 100%; border: 0; margin: 0; border-collapse: collapse;}
+    tr, td { border-bottom: 1px solid #000; padding: 10px 0 6px; text-align: center;}
+    /* td:nth-child(2) { color: blue; font-weight: bold;} */
+    button {background-color: #1e87f0; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; }
+    .second_table {margin-top : 50px; page-break-before : always}
+</style>
+
+<body>
+    <div data-html2canvas-ignore="true" class="no-print">
+        <button type="button" style="cursor: pointer;" onclick="window.print()">Print</button>
+    </div>
+
+    <div id="pdfcanvas" class="top">
+        
+        <div style="text-align: center; margin-top: 40px; border-style: solid; border-width: 4px 0; padding: 20px">
+            <input type="text" id="sensor_display_name" name="센서명" placeholder="센서명" style="font-size: 50px; text-align: center; font-weight: bold;">
+        </div>
+        <div style="font-size: 20px; padding: 20px 0;">
+            <label for="teen">관리번호</label>
+            <input type="text" name="관리번호" placeholder="관리번호" ><br>
+            <label for="teen">현장명</label>
+            <input type="text" name="현장명" placeholder="현장명" value="현장명" id="project_name"><br>
+            <label for="teen">설치위치</label>
+            <input type="text" name="현장명" placeholder="설치위치" value="설치위치" id="place_name"><br>
+            <label for="teen">설치일자</label>
+            <input type="text" name="현장명" placeholder="설치일자" value="설치일자" id="initial_date">
+        </div>
+            
+            <div class="uk-margin-medium-top" style="height: 700px; margin-bottom: 200px;">
+                <h1 style="float: left;">차트</h1>
+                <canvas id="sensors" sstyle="height: 700px;" height="700px"></canvas>
+            </div>
+    </div>
+        
+    <div class="" id="firsttable" style="page-break-before: always;">
+        <h1 style="float: left;">데이타</h1>
+        <table>
+            <thead>
+                <tr id="table_top_name">
+                    <th>계측일자</th>
+                    <th>측정치</a></th>
+                    <!-- <th><a href="#">변화량 (mm)</a></th>
+                    <th><a href="#">변화량 1 (mm)</a></th>
+                    <th><a href="#">변화량 2 (mm)</a></th>
+                    <th><a href="#">변화량 3 (mm)</a></th>
+                    <th><a href="#">변화량 4 (mm)</a></th>
+                    <th><a href="#" class="selected">기온<span uk-icon="icon: chevron-up"></span></a></th>
+                    <th><a href="#">강수량</a></th> -->
+                </tr>
+            </thead>
+            <tbody class="td-v-c" id="datatbletbody">
+            
+            </tbody>
+        </table>
+    </div>
+
+</div>
+    
+
+   
+</body>
+
+</html>
+<script src="/static/js/ws/report_other_all.js"></script>

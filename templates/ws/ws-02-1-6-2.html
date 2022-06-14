@@ -1,0 +1,182 @@
+<!-- ws-02-1-6.html -->
+{% include "ws/ws-header.html" %}
+{% include "ws/ws-leftmenu.html" %}
+
+    <!-- Right / Body -->
+    <div class="tm-main">
+        <div class="uk-container-full uk-position-relative">
+
+            <!-- title -->
+            <div>
+                <h4 class="uk-heading-divider" id="topname"></h4>
+            </div>
+
+            <!-- date & time picker -->
+            <div class="uk-margin uk-flex uk-flex-left uk-flex-row">
+                <div>
+                    <span class="ft-w" style="line-height: 40px;">Data Filter</span>
+                </div>
+                <div class="uk-margin-left">
+                    <div class="uk-inline">
+                        <span class="uk-form-icon" uk-icon="icon: calendar"></span>
+                        <input class="uk-input" type="text" id="date_time_start">
+                    </div>
+                </div>
+                <div class="uk-margin-left">
+                    <div class="uk-inline">
+                        <span class="uk-form-icon" uk-icon="icon: calendar"></span>
+                        <input class="uk-input" type="text" id="date_time_end">
+                    </div>
+                </div>
+                <div class="uk-margin-left" >
+                    <span style="line-height: 40px;"></span>
+                </div>
+                <div class="uk-margin-left" >
+                    <select class="uk-select w-100" id="time">
+                        <option selected="" value="">시각</option>
+                        <option value="01">1시</option>
+                        <option value="02">2시</option>
+                        <option value="03">3시</option>
+                        <option value="04">4시</option>
+                        <option value="05">5시</option>
+                        <option value="06">6시</option>
+                        <option value="07">7시</option>
+                        <option value="08">8시</option>
+                        <option value="09">9시</option>
+                        <option value="10">10시</option>
+                        <option value="11">11시</option>
+                        <option value="12">12시</option>
+                        <option value="13">13시</option>
+                        <option value="14">14시</option>
+                        <option value="15">15시</option>
+                        <option value="16">16시</option>
+                        <option value="17">17시</option>
+                        <option value="18">18시</option>
+                        <option value="19">19시</option>
+                        <option value="20">20시</option>
+                        <option value="21">21시</option>
+                        <option value="22">22시</option>
+                        <option value="23">23시</option>
+                        <option value="00">24시</option>
+                    </select>
+                </div>
+                <div class="" >
+                    <span style="line-height: 40px;"></span>
+                </div>
+                <div class="uk-margin-left">
+                    <select class="uk-select w-100" id="intervalday">
+                        <option selected="" value="">평균</option>
+                        <option value="1">1일</option>
+                        <option value="2">2일</option>
+                        <option value="3">3일</option>
+                        <option value="4">4일</option>
+                        <option value="5">5일</option>
+                        <option value="6">6일</option>
+                        <option value="7">7일</option>
+                        <option value="8">8일</option>
+                        <option value="9">9일</option>
+                        <option value="10">10일</option>
+                        <option value="11">11일</option>
+                        <option value="12">12일</option>
+                        <option value="13">13일</option>
+                        <option value="14">14일</option>
+                        <option value="15">15일</option>
+                    </select>
+                </div>
+                <div class="uk-margin-left">
+                    <button class="uk-button uk-button-primary" type="button" onclick="searchdata()">Apply</button>
+                    <button class="uk-button uk-button-primary" type="button" onclick="resetbtn()">Reset</button>
+                </div>
+            </div>
+
+            <!-- tap menu / sensor group - line type -->
+            <div class="uk-margin uk-margin-medium-top">
+                <ul class="uk-tab">
+                    <!-- <li><a href="ws-02-1-7" id="linechart">Scatter Chart</a></li> -->
+                    <!-- <li><a href="ws-02-2-7" id="trend">Trend</a></li> -->
+                    <li><a id="timelinechart" onclick="timelinelocation()">Timeline Chart</a></li>
+                    <li><a id="data" onclick="datalocation()">Data<span class="uk-badge-yellow" style="display: none;" id="dataalarm">231</span></a></li>
+                    <li  class="uk-active"><a id="info" onclick="infolocation()">Info</a></li>
+                </ul>
+            </div>
+
+            <div class="uk-margin-medium-top">
+                <table class="uk-table uk-table-small uk-table-divider">
+                    <tbody>
+                        <tr>
+                            <td class="uk-width-medium">Project</td>
+                            <td class="ft-w" id="projectName"></td>
+                        </tr>
+                        <tr>
+                            <td>Installation location</td>
+                            <td class="ft-w" id="placeName"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- sensor -->
+            <div class="uk-margin-medium-top">
+                <table class="uk-table uk-table-small uk-table-divider">
+                    <tbody>
+                        <tr>
+                            <td class="uk-width-medium">Sensors</td>
+                            <td class="ft-w" id="sensorNameList"></td>
+                        </tr>
+                        <tr>
+                            <td>Initial Date</td>
+                            <td class="ft-w">2012.10.21 20:20</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- guideliine -->
+            <div class="uk-margin-medium-top">
+                <table class="uk-table uk-table-small uk-table-divider">
+                    <tbody>
+                        <tr>
+                            <td class="uk-width-medium">Guideline Level 1 Max</td>
+                            <td class="ft-w" id="gl1max"></td>
+                        </tr>
+                        <tr>
+                            <td>Guideline Level 1 Min</td>
+                            <td class="ft-w" id="gl1min"></td>
+                        </tr>
+                        <tr>
+                            <td>Guideline Level 2 Max</td>
+                            <td class="ft-w" id="gl2max"></td>
+                        </tr>
+                        <tr>
+                            <td>Guideline Level 2 Min</td>
+                            <td class="ft-w" id="gl2min"></td>
+                        </tr>
+                        <tr>
+                            <td>Guideline Level 3 Max</td>
+                            <td class="ft-w" id="gl3max"></td>
+                        </tr>
+                        <tr>
+                            <td>Guideline Level 3 Min</td>
+                            <td class="ft-w" id="gl3min"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+    <!--// Right / Body -->
+
+
+<!-- date & time picker -->
+<script>
+    $('#date_time_start').datetimepicker({theme:'dark', step:60, format:'Y.m.d H:i', maxDate:'0'});
+    $('#date_time_end').datetimepicker({theme:'dark', step:60, format:'Y.m.d H:i', maxDate:'0'});
+    $('#initial_datetime').datetimepicker({theme:'dark', step:60, format:'Y.m.d H:i', maxDate:'0'});
+</script>
+
+<script src="/static/js/ws/ws-02-1-6-2.js"></script>
+
+</body>
+
+</html>

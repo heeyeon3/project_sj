@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=1240">
+    <meta name="description" content="Total Monitoring System"/>
+
+    <title>GEODATA | TMS</title>
+    <link rel="shortcut icon" href="/static/img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/static/img/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/static/css/uikit.min.css" />
+    <link rel="stylesheet" href="/static/css/jquery.datetimepicker.css" />
+    <link rel="stylesheet" href="/static/css/calc.css" />
+
+    
+    <script src="/static/plugins/js/uikit.min.js"></script>
+    <script src="/static/plugins/js/uikit-icons.min.js"></script>
+    <script src="/static/plugins/js/chart.min.js"></script>
+    <script src="/static/plugins/js/chartjs-plugin-annotation.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/1.4.0/chartjs-plugin-annotation.min.js"></script> -->
+    <!-- <script src="/static/plugins/js/chartjs-plugin-annotation.js"></script> -->
+    <script src="/static/plugins/js/jquery.js"></script>
+    <script src="/static/plugins/js/jquery.datetimepicker.full.min.js"></script>
+
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"
+        integrity="sha512-UXumZrZNiOwnTcZSHLOfcTs0aos2MzBWHXOHOuB0J/R44QB0dwY5JgfbvljXcklVf65Gc4El6RjZ+lnwd2az2g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-zoom/1.2.0/chartjs-plugin-zoom.min.js"
+        integrity="sha512-TT0wAMqqtjXVzpc48sI0G84rBP+oTkBZPgeRYIOVRGUdwJsyS3WPipsNh///ay2LJ+onCM23tipnz6EvEy2/UA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script> -->
+ 
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@0.7.7"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script> -->
+    <!-- <script src="/static/plugins/js/chartjs-plugin-zoom.min.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+    <script src="/static/plugins/js/chartjs-plugin-zoom.js"></script> -->
+    <script src="/static/js/ws/ws-header.js"></script>
+    <script src="/static/js/common/common.js"></script>
+
+    <!-- DataTables -->
+    <!-- <link rel="stylesheet" href="/static/bower_components/datatables.net-bs/css/dataTables.bootstrap.css">
+    <script src="/static/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="/static/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
+    <link type="text/css" href="https://gyrocode.github.io/jquery-datatables-checkboxes/1.2.12/css/dataTables.checkboxes.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://gyrocode.github.io/jquery-datatables-checkboxes/1.2.12/js/dataTables.checkboxes.min.js"></script>
+    <script type="text/javascript" src="//cdn.datatables.net/plug-ins/1.11.3/sorting/natural.js"></script> -->
+
+
+    <link el="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.uikit.min.css">
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/dataTables.uikit.min.js"></script>
+</head>
+
+
+<body>
+    <!-- Header //-->
+    <div class="tm-header tm-navbar-container uk-sticky uk-sticky-fixed uk-active uk-sticky-below">
+        <nav class="uk-navbar-container uk-margin" uk-navbar style="background: #000;">
+
+            <div class="uk-navbar-left">
+                <a class="uk-navbar-item uk-logo" href="ws-02" id="top"><span class="icon-logo"></span></a>
+                <ul class="uk-navbar-nav">
+                    <li>
+                        <span class="ins-title" id="project_name"></span>
+                        <span class="uk-margin-left" id="project_address"></span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="uk-navbar-right">
+                <ul class="uk-navbar-nav">
+                    <li>
+                        <a href="#">{{current_user.user_id}}</a>
+                    </li>
+                    <!-- <li>
+                        <a href="#"><span uk-icon="icon: more-vertical; ratio: 1"></span></a>
+                        <div class="uk-navbar-dropdown">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                <li class="uk-nav-divider"></li>
+                                <li><a href="ws-03">변위공식 관리</a></li>
+                                <li class="uk-nav-divider"></li>
+                                <li><a href="ws-04">고객센터<span class="uk-badge">12</span></a></li>
+                                <li><a href="ws-05">공지사항<span class="uk-badge">3</span></a></li>
+                                <li class="uk-nav-divider"></li>
+                                <li><a href="ws-00">로그아웃</a></li>
+                            </ul>
+                        </div>
+                    </li> -->
+                    <li>
+                        <a href="#"><span uk-icon="icon: more-vertical; ratio: 1"></span></a>
+                        <div class="uk-navbar-dropdown">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                <li><a href="ws-03" id="displacement_management" >고객사 변위공식 관리</a></li>
+                                <li class="uk-nav-divider" id="line00"></li>
+
+                                <li><a href="#reset" uk-toggle id="alarmreset">알림 초기화</a></li>
+                                <li><a href="ws-01" uk-toggle id="project_list">프로젝트 목록</a></li>
+                                <!-- <li class="uk-nav-divider"></li> -->
+
+                            
+                                <li><a href="ws-04" id="customer_service">고객센터</a></li>
+                                <li><a href="ws-05" id="notice">공지사항</a></li>
+                                <li class="uk-nav-divider" id="line01"></li>
+                                <li><a href="ws-10" id="project">프로젝트 설정</a></li>
+                                <li class="uk-nav-divider" id="line02"></li>
+                                <li><a href="ws-10-1" id="project_location">프로젝트 위치 설정</a></li>
+                                <li><a href="ws-10-2" id="datarogger">데이터로거 매핑</a></li>
+                                <li><a href="ws-10-3" id="site_drawing">현장도면 설정</a></li>
+                                <li><a href="ws-10-4" id="installation_point">설치지점 설정</a></li>
+                                <li><a href="ws-10-5" id="sensor_group">센서그룹 설정</a></li>
+                                <li><a href="ws-10-7" id="displacement_installation">변위공식 추가</a></li>
+                                <li><a href="ws-10-6" id="sensor_installation">센서 설정</a></li>
+                                <li class="uk-nav-divider" id="line03"></li>
+                             
+                     
+                                
+                                <li><a href="ws-10-8" id="manager_notice">담당자 알림 설정</a></li>
+                                <li><a href="ws-10-9" id="manager_account">관리자 계정 설정</a></li>
+                                <li class="uk-nav-divider" id="line04"></li>
+                                <li><a href="bo-02" id="back_office">Back Office</a></li>
+                                <li class="uk-nav-divider" id="line05"></li>
+                                <li><a onclick="logout()">로그아웃</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+    </div>
+    <div class="uk-sticky-placeholder" style="height: 80px; margin: 0px;"></div>
+    <!--// Header -->
+
+
+<div id="reset" uk-modal="" class="uk-modal" >
+    <div class="uk-modal-dialog">
+        <button class="uk-modal-close-default uk-icon uk-close" type="button" uk-close=""><svg width="14" height="14" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg"><line fill="none" stroke="#000" stroke-width="1.1" x1="1" y1="1" x2="13" y2="13"></line><line fill="none" stroke="#000" stroke-width="1.1" x1="13" y1="1" x2="1" y2="13"></line></svg></button>
+        <div class="uk-modal-header">
+            <h5 class="uk-modal-title">Reset Sensor Notification</h5>
+        </div>
+        <div class="uk-modal-body">
+            센서 오류 알림을 초기화하시겠습니까?<br>
+            지금까지 발생된 센서 오류 알림과 표시가 삭제되며 이후 발생된 센서 오류에 대해서는 정상적으로 처리됩니다.
+        </div>
+        <div class="uk-modal-footer uk-text-right">
+            <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+            <button class="uk-button uk-button-primary" type="button" id="alarmresetbtn">Reset</button>
+        </div>
+    </div>
+</div>

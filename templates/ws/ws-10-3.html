@@ -1,0 +1,68 @@
+<!-- ws-10-3.html -->
+{% include "ws/ws-header.html" %}
+{% include "ws/ws-leftmenu.html" %}
+
+
+    <!-- Right / Body -->
+    <div class="tm-main">
+        <div class="uk-container-full uk-position-relative">
+
+
+            <!-- title -->
+            <div uk-margin class="uk-flex uk-flex-row uk-flex-between">
+                <div class="uk-text-blue">
+                    <h4>현장도면 설정</h4>
+                    <a href="/ws-10" id="topproject"><span uk-icon="icon: chevron-left" class="uk-margin-right"></span>프로젝트 설정</a>
+                </div>
+                <div>
+                </div>
+            </div>
+
+            <!-- form -->
+            <div class="uk-margin-large-top">
+
+                <form class="uk-form-horizontal uk-margin-large" id="floorplan">
+                    <!-- <hr> -->
+                    <!-- <div class="uk-margin">
+                        <label class="uk-form-label" for="form-horizontal-select">소스코드</label>
+                        <div class="uk-form-controls">
+                            <textarea class="uk-textarea" rows="20" placeholder="" id=""></textarea>
+                        </div>
+                    </div> -->
+                    <hr>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-horizontal-text">도면이미지 업로드</label>
+                        <div class="pd-l-15" uk-form-custom="target: true">
+                            <input type="file" id="project_fp_img" name="project_fp_img">
+                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Select file" disabled>
+                        </div>
+                        <!-- <button class="uk-button uk-button-default" type="button">Submit</button>
+                        <button class="uk-icon-button uk-margin-small-left" uk-icon="trash"></button> -->
+                        <span class="uk-margin-left" id='imgname'></span>
+                    </div>
+                    <hr>
+                </form>
+
+            </div>
+
+
+            <!-- function -->
+            <div class="uk-flex uk-flex-row uk-flex-between uk-margin-large-top">
+                <div>
+                </div>
+                <div>
+                    <button class="uk-button uk-button-default"  id="canclebtn">Cancel</button>
+                    <button class="uk-button uk-button-primary" id="savebtn">Save</button>
+                </div>
+            </div>
+
+            
+
+
+        </div>
+        <!--// Right / Body -->
+
+<script src="/static/js/ws/ws-10-3.js"></script>
+    </body>
+
+    </html>

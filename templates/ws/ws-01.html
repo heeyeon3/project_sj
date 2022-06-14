@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=1240">
+        <meta name="description" content="Total Monitoring System"/>
+    
+        <title>GEODATA | TMS</title>
+        <link rel="shortcut icon" href="/static/img/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/static/img/favicon.ico" type="image/x-icon">
+    
+        <link rel="stylesheet" href="/static/css/index.css">
+        <link rel="stylesheet" href="/static/css/uikit.min.css" />
+        <link rel="stylesheet" href="/static/css/jquery.datetimepicker.css" />
+    
+        <script src="/static/plugins/js/uikit.min.js"></script>
+        <script src="/static/plugins/js/uikit-icons.min.js"></script>
+        <script src="/static/plugins/js/chart.min.js"></script>
+        <script src="/static/plugins/js/chartjs-plugin-annotation.js"></script>
+        <script src="/static/plugins/js/jquery.js"></script>
+        <script src="/static/plugins/js/jquery.datetimepicker.full.min.js"></script>
+    </head>
+
+
+<body>
+    <!-- Header //-->
+    <div class="tm-header tm-navbar-container uk-sticky uk-sticky-fixed uk-active uk-sticky-below">
+        <nav class="uk-navbar-container uk-margin" uk-navbar style="background: #000;">
+
+            <div class="uk-navbar-left">
+                <a class="uk-navbar-item uk-logo" style="cursor: default;"><span class="icon-logo"></span></a>
+                <ul class="uk-navbar-nav">
+                    <li>
+                        <span class="ins-title" id="topcompany"></span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="uk-navbar-right">
+                <ul class="uk-navbar-nav">
+                    <li>
+                        <a href="#">{{current_user.user_id}}</a>
+                    </li>
+                    <li>
+                        <a href="#"><span uk-icon="icon: more-vertical; ratio: 1"></span></a>
+                        <div class="uk-navbar-dropdown">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                <li><a onclick="logout();">로그아웃</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+    </div>
+    <div class="uk-sticky-placeholder" style="height: 80px; margin: 0px;"></div>
+    <!--// Header -->
+
+    <!-- Body //-->
+    <div class="uk-flex uk-flex-column uk-flex-center" style="padding: 40px;" id="project_list">
+
+        <!-- #01 -->
+        <!-- <div class="prj-list">
+            <div class="prj-bg" style="background: linear-gradient(to right, rgba(0,0,0,.60), rgba(0,0,0,.0)), url(/static/img/bg/project-bg.jpg) no-repeat center center/cover; filter: grayscale(0%);">
+                <div>
+                    <h2>테스트중입니다</h2>
+                    <p>2021.08.20 ~ 2022.08.20</p>
+                    <button class="uk-button uk-button-primary" onClick="location.href='ws-00'">Project</button>
+                </div>
+            </div> 
+        </div> -->
+
+        <!-- #01 -->
+        <!-- <div class="prj-list">
+            <div class="prj-bg" style="background: linear-gradient(to right, rgba(0,0,0,.60), rgba(0,0,0,.0)), url(/static/img/bg/project-bg.jpg) no-repeat center center/cover; filter: grayscale(100%);">
+                <div>
+                    <h2>신사역 024 정거장</h2>
+                    <p>2020.08.20 ~ 2021.01.20</p>
+                    <button class="uk-button uk-button-primary" disabled uk-tooltip="완료된 프로젝트입니다.">Project</button>
+                </div>
+            </div> 
+        </div> -->
+
+    </div>
+    <!--// Body -->
+
+    <!-- footer -->
+    <div class="footer-login">
+        <span>© GEODATAh Co., Ltd.</span>
+    </div>
+
+    <!-- page script 시작 -->
+    <script src="/static/js/common/common.js"></script>
+    <script src="/static/js/ws/ws-01.js"></script>
+
+</body>
+
+</html>

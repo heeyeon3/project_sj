@@ -1,0 +1,47 @@
+<!-- bo-08.html -->
+{% include "bo/bo-header.html" %}
+
+
+    <!-- Right / Body -->
+    <div class="tm-main">
+        <div class="uk-container-full uk-position-relative">
+
+
+            <!-- title -->
+            <div uk-margin class="uk-flex uk-flex-row uk-flex-between" style="margin-top: 30px;">
+                <div class="uk-text-blue">
+                    <h4>마스터 계정 설정</h4>
+                    <a href="/bo-02"><span uk-icon="icon: chevron-left" class="uk-margin-right"></span>대시보드</a>
+                </div>
+                <div>
+                </div>
+            </div>
+
+            <!-- confirm password -->
+            <div class="uk-flex uk-flex-column uk-flex-middle uk-margin-large-top">
+                <div class="uk-margin w-220">
+                    <h5>비밀번호 확인</h5>
+                    <form id="passwardcheck">
+                    <div class="uk-inline">
+                        <span class="uk-form-icon icon-b05" uk-icon="icon: lock"></span>
+                        <input class="uk-input bg-w br-0" type="password" id="password" name="password"  style="color: #000 !important;">
+                    </div>
+                    </form>
+                </div>
+                <div class="uk-margin-top w-220">
+                    <button class="uk-button uk-button-primary w-100p" id="save_btn">Ok</button>
+                </div>
+                <div class="uk-margin-small-top w-220">
+                    <button class="uk-button uk-button-default w-100p" onclick="location.href='/bo-02'" >Cancel</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--// Right / Body -->
+    <script src="/static/js/bo/bo-08.js"></script>
+
+
+</body>
+
+</html>

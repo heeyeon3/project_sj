@@ -1,0 +1,112 @@
+<!-- ws-02.html -->
+{% include "ws/ws-header.html" %}
+{% include "ws/ws-leftmenu.html" %}
+
+
+    <!-- Right / Body //-->
+    <div class="tm-main">
+
+        <div class="uk-container-full uk-position-relative">
+            <div style="margin-bottom: 20px;">
+                <label><input class="uk-radio uk-margin-right" type="radio" value="floorplan" name ="main_img" checked>현장도면</label>
+                <label><input class="uk-radio uk-margin-right" type="radio" value="googlemap" name ="main_img" style="margin-left: 50px;">구글 맵</label>
+                <a class="uk-button uk-button-default" style="margin-bottom: 20px; float: right; display: none; " id="floorplan_edit_btn">EDIT</a>
+            </div>
+            
+            <div id="floorplan">
+                <img id="img_cont" src="">
+                <!-- <img id="img_cont" src="/static/img/map/map1.jpeg"> -->
+                
+                <!--// image map -->
+            </div>
+
+
+            <div id="google_map_area" style="display: none;">
+
+                <!--// image map -->
+            </div>
+
+            
+        </div>
+
+    </div>
+    <!--// Right / Body -->
+
+
+    <!-- Modal / Formula -->
+    <div id="label_modal" uk-modal>
+        <div class="uk-modal-dialog">
+            <button class="uk-modal-close-default uk-icon uk-close" type="button" uk-close=""><svg width="14" height="14" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg"><line fill="none" stroke="#000" stroke-width="1.1" x1="1" y1="1" x2="13" y2="13"></line><line fill="none" stroke="#000" stroke-width="1.1" x1="13" y1="1" x2="1" y2="13"></line></svg></button>
+            <div class="uk-modal-header">
+                <h5 class="uk-modal-title">센서 버튼 매핑</h5>
+                <p class="uk-text-meta">
+                    센서 버튼 매핑
+                </p>
+            </div>
+            <div class="uk-modal-body">
+                <fieldset class="uk-fieldset">
+    
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-horizontal-select">설치지점</label>
+                        <select class="uk-select" id="place">
+                            <option value="all">설치지점 불러오기</option>
+                        </select>
+                    </div>
+                    <hr>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-horizontal-select">센서그룹</label>
+                        <select class="uk-select" id="sensorgroup">
+                            <option value="all">센서그룹 불러오기</option>
+                        </select>
+                    </div>
+                    <hr>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-horizontal-select">센서</label>
+                        <select class="uk-select" id="select_sensor">
+                            <option value="all">센서 불러오기</option>
+                        </select>
+                    </div>
+
+                    <!-- <div class="uk-margin">
+                        <label class="uk-form-label" for="form-horizontal-select">센서</label>
+                        <select class="uk-select" id="select_sensor" onfocus='this.size=3;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
+                            <option value="all">센서를 선택해주세요</option>
+                        </select>
+                    </div> -->
+    
+                </fieldset>
+            </div>
+            <div class="uk-modal-footer uk-text-right">
+                <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+                <button class="uk-button uk-button-default uk-modal-close" type="button" id="savebtn">Save</button>
+                <!-- <button class="uk-button uk-button-primary" type="button" id="savebtn">Save</button> -->
+                <button class="uk-button uk-button-primary" type="button" id="editbtn" style="display: none;">Save</button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Notification //-->
+    <div class="uk-alert-primary pos-noti" uk-alert id="notification">
+        <a class="uk-alert-close" uk-close></a>
+        <p>서비스 이용 기간이 얼마 남지 않았습니다. 기간 연장이 필요하실 경우 담당자에게 연락해 주시기 바랍니다.</p>
+    </div>
+    <!--// Notification -->
+
+<script src="/static/js/ws/ws-02.js"></script>
+
+<!-- GOOGLE MAP API (현재 API KEY : JUN) (DOM ELEMENT 뒤에 존재해야함!)--> 
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+<script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDd7FRwIC1iTX8SoT-ACMeZO8NRwLBb0l8&callback=GoogleMap&v=weekly"
+      async
+    ></script>
+<!-- GOOGLE MAP API 끝  -->
+
+
+</body>
+<style>
+    .map-label{background-color: #1e87f0c0; background-size: 30px; padding: 11px; border-radius: 100%;} 
+</style>
+</html>

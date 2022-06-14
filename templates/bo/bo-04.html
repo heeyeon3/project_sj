@@ -1,0 +1,156 @@
+<!-- bo-04.html -->
+{% include "bo/bo-header.html" %}
+
+
+
+    <!-- Right / Body -->
+    <div class="tm-main">
+        <div class="uk-container-full uk-position-relative" style="margin-top: 30px;">
+
+
+            <!-- title -->
+            <div uk-margin class="uk-flex uk-flex-row uk-flex-between">
+                <div class="uk-text-blue">
+                    <h4>매출현황</h4>
+                    <a href="/bo-02"><span uk-icon="icon: chevron-left" class="uk-margin-right"></span>대시보드</a>
+                </div>
+                <div>
+                    <a class="uk-button uk-button-primary uk-margin-right" onclick="exceldown()">Excel</a>
+                    <select class="uk-select" style="width: 100px;" id="option_year">
+                        <!-- <option>2021</option>
+                        <option>2020</option> -->
+                    </select>
+                </div>
+            </div>
+
+            <!-- Chart / sales  -->
+            <div class="uk-text-blue uk-margin-medium-top">
+                <h4 id="selectyear"></h4>
+            </div>
+            <div class="uk-margin-small-top">
+                <canvas id="sales" style="height: 340px;"></canvas>
+            </div>
+
+            <!-- table -->
+            <div class="uk-overflow-auto uk-margin-medium-top data-tb">
+                <table class="uk-table uk-table-small uk-table-divider fml-lh js-filter" id="data-list">
+                    <thead>
+                        <tr>
+                            <th class="w-200">등록일시</th>
+                            <th class="w-150">고객사</th>
+                            <th class="mw-200">프로젝트</th>
+                            <th class="w-200">계약기간</th>
+                            <th class="w-82">구분</th>
+                            <th class="w-200">금액</th>
+                            <th class="w-82">상태</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbl_tbody">
+                        <!-- <tr data-state="done">
+                            <td>2021.01.10 23:59:59</td>
+                            <td><a href="/bo-03-1">성진지오텍</a></td>
+                            <td><a href="/bo-03-1-1">양평빈양지구 공동주택 신축공사</a></td>
+                            <td>2021.01.10 ~ 2022.01.10</td>
+                            <td>신규</td>
+                            <td>999,999,999,999원</td>
+                            <td class="uk-text-blue">정상</td>
+                        </tr>
+                        <tr data-state="done">
+                            <td>2021.01.09 23:59:59</td>
+                            <td><a href="/bo-03-1">성진지오텍</a></td>
+                            <td><a href="/bo-03-1-1">양평빈양지구 공동주택 신축공사</a></td>
+                            <td>2021.01.10 ~ 2022.01.10</td>
+                            <td>신규</td>
+                            <td>999,999,999,999원</td>
+                            <td class="uk-text-yellow">대기</td>
+                        </tr>
+                        <tr data-state="done">
+                            <td>2021.01.08 23:59:59</td>
+                            <td><a href="/bo-03-1">성진지오텍</a></td>
+                            <td><a href="/bo-03-1-1">양평빈양지구 공동주택 신축공사</a></td>
+                            <td>2021.01.10 ~ 2022.01.10</td>
+                            <td>연장</td>
+                            <td>999,999,999,999원</td>
+                            <td class="uk-text-red">완료</td>
+                        </tr> -->
+                    </tbody> 
+                </table>
+            </div>
+
+            <!-- pagenation -->
+            <div class="uk-margin-medium-top">
+                <ul class="uk-pagination uk-flex-center" uk-margin id="pagenation">
+                    <!-- <li><a href="#"><span uk-pagination-previous></span></a></li>
+                    <li><a href="#">1</a></li>
+                    <li class="uk-disabled"><span>...</span></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">6</a></li>
+                    <li class="uk-active"><span>7</span></li>
+                    <li><a href="#">8</a></li>
+                    <li><a href="#"><span uk-pagination-next></span></a></li> -->
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <!--// Right / Body -->
+
+
+    <!-- chart / sales -->
+    <script>
+        // const labels = ['2021.01', '2021.02', '2021.03', '2021.04', '2021.05', '2021.06', '2021.07', '2021.08', '2021.09', '2021.10', '2021.11', '2021.12'];
+
+        // const chart = new Chart('sales', {
+        //     type: 'line',
+        //     data: {
+        //         labels: labels,
+        //         datasets: [{
+        //             type: 'bar',
+        //             label: 'Sales',
+        //             data: [10000000, 12000000, 30000000, 50000000, 20000000, 12000000, 110000000, 13000000, 90000000, 140000000, 210000000, 120000000],
+        //             backgroundColor: '#1e87f0',
+        //         }]
+        //     },
+        //     options: {
+        //         scales: {
+        //             y: {
+        //                 beginAtZero: true,
+        //                 grid: {
+        //                     color: '#222',
+        //                 }
+        //             },
+        //             x: {
+        //                 grid: {
+        //                     color: '#222',
+        //                 }
+        //             },
+
+        //         },
+        //         maintainAspectRatio: false,
+        //         plugins: {
+        //             tooltip: {
+        //                 padding: 10,
+        //                 cornerRadius: 0,
+        //                 bodySpacing: 4,
+        //                 titleSpacing: 10,
+        //                 multiKeyBackground: '#00000000',
+        //                 displayColors: false,
+        //             },
+        //             legend: {
+        //                 position: 'bottom',
+        //                 align: 'start',
+        //                 padding: 20,
+        //                 labels: {
+        //                     boxWidth: 12,
+        //                     padding: 20,
+        //                 }
+        //             }
+        //         }
+        //     }
+        // })
+    </script>
+
+<script src="static/js/bo/bo-04.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,264 @@
+<!-- ws-10.html -->
+{% include "ws/ws-header.html" %}
+{% include "ws/ws-leftmenu.html" %}
+
+
+    <!-- Right / Body -->
+    <div class="tm-main">
+
+        <div class="uk-container-full uk-position-relative">
+
+            <!-- #01 프로젝트 프로필 //-->
+            <div class="uk-child-width-1" uk-grid>
+                <div>
+                    <div class="uk-card uk-card-secondary uk-card-large uk-card-body uk-light">
+                        <h4>프로젝트 프로필</h4>
+                        <table class="uk-table uk-table-divider uk-table-justify">
+                            <thead class="br-t-3">
+                                <tr>
+                                    <th class="w-200">등록일시</th>
+                                    <th id="project_create_date"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>고객사</td>
+                                    <td id="company_name"></td>
+                                </tr>
+                                <tr>
+                                    <td>프로젝트</td>
+                                    <td id="projectName"></td>
+                                </tr>
+                                <tr>
+                                    <td>계약기간</td>
+                                    <td id="project_date"></td>
+                                </tr>
+                                <tr>
+                                    <td>계약금액</td>
+                                    <td id="project_cost"></td>
+                                </tr>
+                                <tr>
+                                    <td class="uk-text-red" id="project_latlng_td">현장 위치</td>
+                                    <td id="project_latlng"></td>
+                                </tr>
+                                <tr>
+                                    <td class="uk-text-red" id="projectaddress_td">현장 주소</td>
+                                    <td id="projectaddress"></td>
+                                </tr>
+                                <tr>
+                                    <td class="uk-text-red" id="project_img_td">현장 이미지</td>
+                                    <td id="project_img"></td>
+                                </tr>
+                                <tr class="br-b-3"></tr>
+                            </tbody>
+                        </table>
+                        <a class="uk-button uk-button-text" id="project_location" onclick="project_location()">프로젝트 위치 설정</a>
+                    </div>
+                </div>
+            </div>
+            <!--// #01 프로젝트 프로필 -->
+
+            <!-- #02 데이터로거 //-->
+            <div class="uk-child-width-1" uk-grid>
+                <div>
+                    <div class="uk-card uk-card-secondary uk-card-large uk-card-body uk-light">
+                        <h4>데이터로거</h4>
+                        <table class="uk-table uk-table-divider uk-table-justify">
+                            <thead class="br-t-3">
+                                <tr>
+                                    <th class="mw-200">데이터로거</th>
+                                    <th class="w-150 uk-text-center">매핑된 센서</th>
+                                    <th class="w-150 uk-text-center">연결된 센서</th>
+                                    <!-- <th class="w-150 uk-text-center">측정간격</th> -->
+                                </tr>
+                            </thead>
+                            <tbody id="datarogger_tbody">
+                                <!-- <tr>
+                                    <td><a href="ws-10-2">ABCDEFGHIJKLMNOPQRSTUVWXYZ.txt</a></td>
+                                    <td class="uk-text-center">20</td>
+                                    <td class="uk-text-center">20</td>
+                                    <td class="uk-text-center">1000</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="ws-10-2">ABCDEFGHIJKLMNOPQRSTUVWXYZ.txt</a></td>
+                                    <td class="uk-text-center uk-text-red">10</td>
+                                    <td class="uk-text-center">20</td>
+                                    <td class="uk-text-center">9999999999</td>
+                                </tr> -->
+                                <tr class="br-b-3"></tr>
+                            </tbody>
+                        </table>
+                        <a class="uk-button uk-button-text" id="datarogger" onclick="datarogger()">데이터로거 추가</a>
+                    </div>
+                </div>
+            </div>
+            <!--// #02 데이터로거 -->
+
+            <!-- #03 설치도면 //-->
+            <div class="uk-child-width-1" uk-grid>
+                <div>
+                    <div class="uk-card uk-card-secondary uk-card-large uk-card-body uk-light">
+                        <h4>현장도면</h4>
+                        <table class="uk-table uk-table-divider uk-table-justify">
+                            <thead class="br-t-3">
+                                <tr>
+                                    <th class="mw-200">프로젝트</th>
+                                    <!-- <th class="w-200 uk-text-center">소스</th> -->
+                                    <th class="w-200 uk-text-center">도면</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="br-t-3"></tr>
+                                <tr>
+                                    <td id="floorplan_project_name"></td>
+                                    <!-- <td class="uk-text-center"><span class="icon-guideline-b"></span></td> -->
+                                    <td class="uk-text-center"><span class="icon-guideline-d" id="floorplanyn"></span></td>
+                                </tr>
+                                <tr class="br-b-3"></tr>
+                            </tbody>
+                        </table>
+                        <a class="uk-button uk-button-text" id="site_drawing" onclick="site_drawing()">현장도면 설정</a>
+                    </div>
+                </div>
+            </div>
+            <!--// #03 설치도면 -->
+
+            <!-- #04 설치지점 //-->
+            <div class="uk-child-width-1" uk-grid>
+                <div>
+                    <div class="uk-card uk-card-secondary uk-card-large uk-card-body uk-light">
+                        <h4>설치지점</h4>
+                        <table class="uk-table uk-table-divider uk-table-justify">
+                            <thead class="br-t-3">
+                                <tr>
+                                    <th class="w-200">설지지점</th>
+                                    <th>위도</th>
+                                    <th>경도</th>
+                                </tr>
+                            </thead>
+                            <tbody id="place_tbody">
+                                <!-- <tr>
+                                    <td>차량기지</td>
+                                    <td>41.40338</td>
+                                    <td>2.17403</td>
+                                </tr>
+                                <tr>
+                                    <td>진입도로</td>
+                                    <td>41.40338</td>
+                                    <td>2.17403</td>
+                                </tr> -->
+                                <tr class="br-b-3"></tr>
+                            </tbody>
+                        </table>
+                        <a class="uk-button uk-button-text" id="installation_point" onclick="installation_point()">설치지점 설정</a>
+                    </div>
+                </div>
+            </div>
+            <!--// #04 설치지점 -->
+
+            <!-- #05 센서그룹 //-->
+            <div class="uk-child-width-1" uk-grid>
+                <div>
+                    <div class="uk-card uk-card-secondary uk-card-large uk-card-body uk-light">
+                        <h4>센서그룹</h4>
+                        <table class="uk-table uk-table-divider uk-table-justify">
+                            <thead class="br-t-3">
+                                <tr>
+                                    <th class="w-200">설치지점</th>
+                                    <th>센서그룹</th>
+                                    <th>그룹타입</th>
+                                </tr>
+                            </thead> 
+                            <tbody  id="sensorgroup_tbody">
+                                <!-- <tr>
+                                    <td>차량기지</td>
+                                    <td>도상침하계 상</td>
+                                    <td>가로형</td>
+                                </tr>
+                                <tr>
+                                    <td>차량기지</td>
+                                    <td>도상침하계 하</td>
+                                    <td>세로형</td>
+                                </tr>
+                                <tr>
+                                    <td>진입도로</td>
+                                    <td>도상침하계 상</td>
+                                    <td>스캐터</td>
+                                </tr>
+                                <tr>
+                                    <td>진입도로</td>
+                                    <td>도상침하계 하</td>
+                                    <td>로스셀</td>
+                                </tr> -->
+                                <tr class="br-b-3"></tr>
+                            </tbody>
+                        </table>
+                        <a class="uk-button uk-button-text" id="sensor_group" onclick="sensor_group()">센서그룹 설정</a>
+                    </div>
+                </div>
+            </div>
+            <!--// #05 센서그룹 -->
+
+            <!-- #06 센서 //-->
+            <div class="uk-child-width-1" uk-grid>
+                <div>
+                    <div class="uk-card uk-card-secondary uk-card-large uk-card-body uk-light">
+                        <h4>센서<span class="uk-align-right ft-count-index">등록안된 센서<span class="title-id uk-text-red ft-count" id="nonesensor"></span></span></h4>
+                        <table class="uk-table uk-table-divider uk-table-justify">
+                            <thead class="br-t-3">
+                                <tr>
+                                    <th class="w-200">설치지점</th>
+                                    <th>센서그룹</th>
+                                    <th>그룹타입</th>
+                                    <th>등록된 센서</th>
+                                    <th>설정 완료된 센서</th>
+                                </tr>
+                            </thead>
+                            <tbody id="sensortbody">
+                                <!-- <tr>
+                                    <td>차량기지</td>
+                                    <td>도상침하계 상</td>
+                                    <td>가로형</td>
+                                    <td>10</td>
+                                    <td>10</td>
+                                </tr>
+                                <tr>
+                                    <td>차량기지</td>
+                                    <td>도상침하계 하</td>
+                                    <td>세로형</td>
+                                    <td>20</td>
+                                    <td>20</td>
+                                </tr>
+                                <tr>
+                                    <td>진입도로</td>
+                                    <td>도상침하계 상</td>
+                                    <td>스캐터</td>
+                                    <td>20</td>
+                                    <td class="uk-text-red">10</td>
+                                </tr>
+                                <tr>
+                                    <td>진입도로</td>
+                                    <td>도상침하계 하</td>
+                                    <td>로스셀</td>
+                                    <td>3</td>
+                                    <td>3</td>
+                                </tr> -->
+                                <tr class="br-b-3"></tr>
+                            </tbody>
+                        </table>
+                        <a class="uk-button uk-button-text" id="sensor_installation" onclick="sensor_installation()">센서 설정</a>
+                    </div>
+                </div>
+            </div>
+            <!--// #06 센서그룹 -->
+
+
+        </div>
+
+    </div>
+    <!--// Right / Body -->
+
+    <script src="/static/js/ws/ws-10.js"></script>
+</body>
+
+</html>

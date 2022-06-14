@@ -1,0 +1,159 @@
+<!-- ws-10-2.html -->
+{% include "ws/ws-header.html" %}
+{% include "ws/ws-leftmenu.html" %}
+
+
+
+    <!-- Right / Body -->
+    <div class="tm-main">
+        <div class="uk-container-full uk-position-relative">
+
+
+            <!-- title -->
+            <div uk-margin class="uk-flex uk-flex-row uk-flex-between">
+                <div class="uk-text-blue">
+                    <h4>데이터로거 매핑</h4>
+                    <a href="/ws-10" id="projectsetup"><span uk-icon="icon: chevron-left" class="uk-margin-right"></span>프로젝트 설정</a>
+                </div>
+                
+            </div>
+
+            <!-- form -->
+            <div class="uk-margin-large-top">
+                <form class="uk-form-horizontal uk-margin-large">
+                    <hr>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="#">데이타로거</label>
+                        <div>
+                            <select class="uk-select" style="width: 400px;" id="dataloggerlist">
+                                <!-- <option value='0'>Data-Logger-01.txt</option>
+                                <option value='0'>ABCDEFGHIJKLMNOPQRSTUVWXYZ.txt</option>
+                                <option value='0'>Data-Logger-03.txt</option>
+                                <option value='0'>Data-Logger-04.txt</option>
+                                <option value='0'>Data-Logger-05.txt</option>
+                                <option value='0'>Data-Logger-06.txt</option> -->
+                            </select>
+                            <!-- <button class="uk-button uk-button-primary" onclick="">Apply</button> -->
+                        </div>
+                    </div>
+                    <hr>
+                </form>
+            </div>
+
+            <!-- table -->
+            <div class="uk-overflow-auto uk-margin-medium-top data-tb">
+                <table class="uk-table uk-table-small uk-table-divider fml-lh js-filter" id="sensortable">
+                    <thead>
+                        <tr>
+                            <th class="w-100">Data No.</th>
+                            <th class="w-180">센서명</th>
+                            <th class="w-180">센서 S/N (옵션)</th>
+                            <th></th>
+                            <th colspan="3">데이터 구분</th>
+                            <th></th>
+                            <th>헤더</th>
+                            <th class="w-220"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablebody">
+                        <!-- <tr data-state="done">
+                            <td>1</td>
+                            <td><input class="uk-input" type="text" placeholder=""></td>
+                            <td><input class="uk-input" type="text" placeholder=""></td>
+                            <td>
+                                <select class="uk-select w-100">
+                                    <option selected="">x</option>
+                                    <option>y</option>
+                                    <option>single</option>
+                                </select>
+                            </td>
+                            <td>
+                                <a href="" class="uk-icon-button uk-margin-small-right" uk-icon="chevron-up"></a>
+                                <a href="" class="uk-icon-button uk-margin-small-right" uk-icon="chevron-down"></a>
+                                <a href="" class="uk-icon-button uk-margin-small-right" uk-icon="plus"></a>
+                                <a href="" class="uk-icon-button uk-margin-small-right" uk-icon="trash"></a>
+                            </td>
+                        </tr>
+                        <tr data-state="done">
+                            <td>2</td>
+                            <td><input class="uk-input" type="text" placeholder=""></td>
+                            <td><input class="uk-input" type="text" placeholder=""></td>
+                            <td>
+                                <select class="uk-select w-100">
+                                    <option selected="">x</option>
+                                    <option>y</option>
+                                    <option>single</option>
+                                </select>
+                            </td>
+                            <td>
+                                <a href="" class="uk-icon-button uk-margin-small-right" uk-icon="chevron-up"></a>
+                                <a href="" class="uk-icon-button uk-margin-small-right" uk-icon="chevron-down"></a>
+                                <a href="" class="uk-icon-button uk-margin-small-right" uk-icon="plus"></a>
+                                <a href="" class="uk-icon-button uk-margin-small-right" uk-icon="trash"></a>
+                            </td>
+                        </tr>
+                        <tr data-state="done">
+                            <td>3</td>
+                            <td><input class="uk-input" type="text" placeholder=""></td>
+                            <td><input class="uk-input" type="text" placeholder=""></td>
+                            <td>
+                                <select class="uk-select w-100">
+                                    <option selected="">x</option>
+                                    <option>y</option>
+                                    <option>single</option>
+                                </select>
+                            </td>
+                            <td>
+                                <a href="" class="uk-icon-button uk-margin-small-right" uk-icon="chevron-up"></a>
+                                <a href="" class="uk-icon-button uk-margin-small-right" uk-icon="chevron-down"></a>
+                                <a href="" class="uk-icon-button uk-margin-small-right" uk-icon="plus"></a>
+                                <a href="" class="uk-icon-button uk-margin-small-right" uk-icon="trash"></a>
+                            </td>
+                        </tr> -->
+                    </tbody> 
+                </table>
+            </div>
+
+
+            <div class="uk-overflow-auto uk-margin-medium-top data-tb">
+                <table class="uk-table uk-table-small uk-table-divider fml-lh js-filter" id="sensortable">
+                    <thead>
+                        <tr>
+                            <th class="w-100">Data No.</th>
+                            <th class="w-180">센서명</th>
+                            <th class="w-180">센서 S/N (옵션)</th>
+                            <th></th>
+                            <th colspan="3">데이터 구분</th>
+                            <th></th>
+                            <th>헤더</th>
+                            <th class="w-220"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablebody2">
+                       
+                    </tbody> 
+                </table>
+            </div>
+
+
+
+            <!-- function -->
+            <div class="uk-flex uk-flex-row uk-flex-between uk-margin-large-top">
+                <div>
+                </div>
+                <div>
+                    <button class="uk-button uk-button-default" id="canclebtn">Cancel</button>
+                    <button type="button"  class="uk-button uk-button-primary" onclick="datasave()">Save</button>
+                </div>
+            </div>
+
+
+
+
+        </div>
+        <!--// Right / Body -->
+
+    <script src="static/js/ws/ws-10-2.js"></script>
+    </body>
+
+    </html>

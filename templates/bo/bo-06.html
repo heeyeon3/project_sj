@@ -1,0 +1,109 @@
+<!-- bo-06.html -->
+{% include "bo/bo-header.html" %}
+
+    <!-- Right / Body -->
+    <div class="tm-main">
+        <div class="uk-container-full uk-position-relative">
+
+
+            <!-- title -->
+            <div uk-margin class="uk-flex uk-flex-row uk-flex-between">
+                <div class="uk-text-blue">
+                    <h4>고객센터</h4>
+                    <a href="/bo-02"><span uk-icon="icon: chevron-left" class="uk-margin-right"></span>대시보드</a>
+                </div>
+                <div>
+                </div>
+            </div>
+
+            <!-- table -->
+            <div class="uk-overflow-auto uk-margin-medium-top data-tb">
+                <table class="uk-table uk-table-small uk-table-divider fml-lh js-filter" id="data-list">
+                    <thead>
+                        <tr>
+                            <th >No.</th>
+                            <th class="w-200">등록일시</th>
+                            <th class="w-150">고객사</th>
+                            <th class="w-250">프로젝트</th>
+                            <th class="mw-200">제목</th>
+                            <th class="w-82">상태</th>
+                            <!-- <th class="w-40"><a href="#">No.</a></th>
+                            <th class="w-200"><a href="#" class="selected">등록일시<span uk-icon="icon: chevron-up"></span></a></th>
+                            <th class="w-150"><a href="#">고객사</a></th>
+                            <th class="w-250"><a href="#">프로젝트</a></th>
+                            <th class="mw-200"><a href="#">제목</a></th>
+                            <th class="w-82"><a href="#" class="selected">상태<span uk-icon="icon: chevron-down"></span></a></th> -->
+                        </tr>
+                    </thead>
+                    <tbody id="tbl_tbody">
+                        <!-- <tr data-state="done">
+                            <td>2</td>
+                            <td>2021.10.12 23:00:59</td>
+                            <td>성진지오텍</td>
+                            <td>양평빈양지구 공동주택 신축공사</td>
+                            <td><a href="/bo-06-2">데이타 수정 바랍니다.</a></td>
+                            <td>요청</td>
+                        </tr>
+                        <tr data-state="done">
+                            <td>1</td>
+                            <td>2021.10.10 23:00:59</td>
+                            <td>성진지오텍</td>
+                            <td>양평빈양지구 공동주택 신축공사</td>
+                            <td><a href="/bo-06-1">데이타 수정 바랍니다.</a></td>
+                            <td class="uk-text-blue">완료</td>
+                        </tr> -->
+                    </tbody> 
+                </table>
+            </div>
+
+            <!-- pagenation -->
+            <div class="uk-margin-medium-top">
+                <!-- <ul class="uk-pagination uk-flex-center" uk-margin id="pagenation">
+                    <li><a href="#"><span uk-pagination-previous></span></a></li>
+                    <li><a href="#">1</a></li>
+                    <li class="uk-disabled"><span>...</span></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">6</a></li>
+                    <li class="uk-active"><span>7</span></li>
+                    <li><a href="#">8</a></li>
+                    <li><a href="#"><span uk-pagination-next></span></a></li>
+                </ul> -->
+            </div>
+
+        </div>
+    </div>
+    <!--// Right / Body -->
+
+<script>
+// var selected_dataList = $("#testtable").DataTable({
+//         "lengthChange": false,
+//         "searching": false,
+//         "ordering": true,
+//         "colReorder": false,
+//         "info": false,
+//         "autoWidth": true,
+//         "processing": true,
+//         "responsive": true,
+//         "columnDefs": [
+//             { orderable: false, targets: 0 },
+//             { orderable: false, targets: 4 },
+//             {"className": "text-center", "targets": "_all"}
+//         ],
+//         "paging": false,
+//         "scrollY":  "40%",
+//         "scrollCollapse": true,
+//         "language": {
+//           "zeroRecords": "선택된 목록이 없습니다."
+//         },
+//         dom: "<'row'<'col-sm-6'l><'col-sm-6'f>>" +
+//              "<'row'<'col-sm-12'tr>>" +
+//              "<'row'<'col-sm-12'p>>"
+//     });
+
+</script>
+
+<script src="/static/js/bo/bo-06.js"></script>
+
+</body>
+
+</html>

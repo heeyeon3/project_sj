@@ -1,0 +1,94 @@
+<!-- ws-10-1.html -->
+{% include "ws/ws-header.html" %}
+{% include "ws/ws-leftmenu.html" %}
+
+
+
+    <!-- Right / Body -->
+    <div class="tm-main">
+        <div class="uk-container-full uk-position-relative">
+
+
+            <!-- title -->
+            <div uk-margin class="uk-flex uk-flex-row uk-flex-between">
+                <div class="uk-text-blue">
+                    <h4>프로젝트 위치 설정</h4>
+                    <a href="/ws-10" id="topproject"><span uk-icon="icon: chevron-left" class="uk-margin-right"></span>프로젝트 설정</a>
+                </div>
+                <div>
+                </div>
+            </div>
+
+            <!-- form -->
+            <div class="uk-margin-large-top">
+
+                <form class="uk-form-horizontal uk-margin-large" id="projectlocation">
+                    <hr>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-horizontal-text">현장 위치 (위도)</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="project_lat" name="project_lat" type="text" placeholder="" doubleonly>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-horizontal-text">현장 위치 (경도)</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="project_lng" name="project_lng" type="text" placeholder="" doubleonly>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-horizontal-text">현장 위치 (주소)</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="projectAddress" name="project_address" type="text" placeholder="">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-horizontal-text">기상예보 X좌표 (위도)</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="weather_lat" name="weather_lat" type="text" placeholder="">
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-horizontal-text">기상예보 Y좌표 (경도)</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="weather_lng" name="weather_lng" type="text" placeholder="">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="">현장 이미지</label>
+                        <div class="pd-l-15" uk-form-custom="target: true">
+                            <input type="file" id="project_img" name="project_img">
+                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Select file" disabled>
+                        </div>
+                        <span style="margin-left: 10px;" id="imgname"></span>
+                        <!-- <button class="uk-button uk-button-default" type="button">Submit</button> -->
+                    </div>
+                    <hr>
+                </form>
+
+            </div>
+
+
+            <!-- function -->
+            <div class="uk-flex uk-flex-row uk-flex-between uk-margin-large-top">
+                <div>
+                </div>
+                <div>
+                    <button class="uk-button uk-button-default" onclick="location.href='/ws-10'" id="canclebtn">Cancel</button>
+                    <button class="uk-button uk-button-primary" id="btn_save" >Save</button>
+                </div>
+            </div>
+
+            
+
+
+        </div>
+        <!--// Right / Body -->
+
+
+    </body>
+
+    </html>
+    <script src="/static/js/ws/ws-10-1.js"></script>

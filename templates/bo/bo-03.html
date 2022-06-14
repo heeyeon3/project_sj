@@ -1,0 +1,94 @@
+<!-- bo-03.html -->
+{% include "bo/bo-header.html" %}
+
+    <!-- Right / Body -->
+    <div class="tm-main">
+        <div class="uk-container-full uk-position-relative">
+
+
+            <!-- title -->
+            <div uk-margin class="uk-flex uk-flex-row uk-flex-between" style="margin-top: 30px;">
+                <div class="uk-text-blue">
+                    <h4>고객사 관리</h4>
+                    <a href="/bo-02"><span uk-icon="icon: chevron-left" class="uk-margin-right"></span>대시보드</a>
+                </div>
+                <div>
+                    <a class="uk-button uk-button-primary uk-margin-right" href="/bo-03-2?type=add">고객사 추가</a>
+                </div>
+            </div>
+
+            <!-- table -->
+            <div class="uk-overflow-auto uk-margin-medium-top data-tb">
+                <table class="uk-table uk-table-small uk-table-divider fml-lh js-filter" id="data-list">
+                    <thead>
+                        <tr>
+                            <th >No.</th>
+                            <th>상호</th>
+                            <th class="w-150">ID</th>
+                            <th class="w-150">사업자번호</th>
+                            <th class="w-50 uk-text-center">정상</th>
+                            <th class="w-50 uk-text-center">완료</th>
+                            <th class="w-200 uk-text-center">등록일시</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbl_tbody">
+                        <!-- <tr data-state="done">
+                            <td>3</td>
+                            <td><a href="/bo-03-1">성진지오텍</a></td>
+                            <td>sungjin</td>
+                            <td>123-45-67890</td>
+                            <td class="uk-text-center">999</td>
+                            <td class="uk-text-center">999</td>
+                            <td class="uk-text-center">2021.10.10 20:00:59</td>
+                        </tr>
+                        <tr data-state="done">
+                            <td>2</td>
+                            <td><a href="/bo-03-1">성진지오텍</a></td>
+                            <td>sungjin</td>
+                            <td>123-45-67890</td>
+                            <td class="uk-text-center">2</td>
+                            <td class="uk-text-center">2</td>
+                            <td class="uk-text-center">2021.10.10 20:00:59</td>
+                        </tr>
+                        <tr data-state="done">
+                            <td>1</td>
+                            <td><a href="/bo-03-1">성진지오텍</a></td>
+                            <td>sungjin</td>
+                            <td>123-45-67890</td>
+                            <td class="uk-text-center">2</td>
+                            <td class="uk-text-center">2</td>
+                            <td class="uk-text-center">2021.10.10 20:00:59</td>
+                        </tr> -->
+                    </tbody> 
+                </table>
+            </div>
+
+            <!-- pagenation -->
+            <!-- <div class="uk-margin-medium-top">
+                <ul class="uk-pagination uk-flex-center" uk-margin>
+                    <li><span uk-pagination-previous></span></a></li>
+                    <li><a href="#">1</a></li>
+                    <li class="uk-disabled"><span>...</span></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">6</a></li>
+                    <li class="uk-active"><span>7</span></li>
+                    <li><a href="#">8</a></li>
+                    <li><a href="#"><span uk-pagination-next></span></a></li>
+                </ul>
+            </div> -->
+
+        </div>
+    </div>
+    <!--// Right / Body -->
+
+<script>
+function btn() {
+  alert("마스터 계정이 수정되었습니다.");
+  window.location = '/bo-02';
+}
+</script>
+<script src="/static/js/bo/bo-03.js"></script>
+
+</body>
+
+</html>

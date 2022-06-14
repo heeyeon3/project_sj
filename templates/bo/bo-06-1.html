@@ -1,0 +1,100 @@
+<!-- bo-06-1.html -->
+{% include "bo/bo-header.html" %}
+
+    <!-- Right / Body -->
+    <div class="tm-main">
+        <div class="uk-container-full uk-position-relative">
+
+
+            <!-- title -->
+            <div uk-margin class="uk-flex uk-flex-row uk-flex-between">
+                <div class="uk-text-blue">
+                    <h4>고객센터</h4>
+                    <a href="/bo-06"><span uk-icon="icon: chevron-left" class="uk-margin-right"></span>목록</a>
+                </div>
+                <div>
+                </div>
+            </div>
+            
+            <!-- view -->
+            <div class="uk-margin-large-top">
+                <!-- 문의 -->
+                <div>
+                    <h4>문의</h4>
+                    <table class="uk-table uk-table-divider uk-table-justify">
+                        <thead class="br-t-3">
+                            <tr>
+                                <th class="w-200">작성일시</th>
+                                <th id="servicecenter_date"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>고객사</td>
+                                <td id="company_name"></td>
+                            </tr>
+                            <tr>
+                                <td>프로젝트</td>
+                                <td id="project_name"></td>
+                            </tr>
+                            <tr>
+                                <td>제목</td>
+                                <td><h5 id="servicecenter_name"></h5></td>
+                            </tr>
+                            <tr>
+                                <td>문의내용</td>
+                                <td id="servicecenter_inquiry"></td>
+                            </tr>
+                            <tr class="br-b-3">
+                                <td>첨부파일</td>
+                                <td><a href="#"></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 답변 -->
+                <div class="uk-margin-large-top">
+                    <h4>답변</h4>
+                    <table class="uk-table uk-table-divider uk-table-justify">
+                        <thead class="br-t-3">
+                            <tr>
+                                <th class="w-200">작성일시</th>
+                                <th id="servicecenter_answer_date"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="br-b-3">
+                                <td>문의내용</td>
+                                <td id="servicecenter_answer"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- function -->
+            <div class="uk-flex uk-flex-row uk-flex-between uk-margin-large-top">
+                <div>
+                </div>
+                <div>
+                    <button class="uk-button uk-button-primary" onclick="location.href='/bo-06'">List</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--// Right / Body -->
+
+<script>
+function btn() {
+  alert("마스터 계정이 수정되었습니다.");
+  window.location = '/bo-02';
+}
+</script>
+
+<script src="/static/js/bo/bo-06-1.js"></script>
+
+</body>
+
+</html>

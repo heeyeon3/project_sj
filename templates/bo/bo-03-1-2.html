@@ -1,0 +1,101 @@
+<!-- bo-03-1-2.html -->
+{% include "bo/bo-header.html" %}
+
+    <!-- Right / Body -->
+    <div class="tm-main">
+        <div class="uk-container-full uk-position-relative">
+
+
+            <!-- title -->
+            <div uk-margin class="uk-flex uk-flex-row uk-flex-between">
+                <div class="uk-text-blue" id="company_name">
+                    <h4>프로젝트</h4>
+                    <!-- <a href="/bo-03-1-1"><span uk-icon="icon: chevron-left" class="uk-margin-right"></span>성진지오텍</a> -->
+                </div>
+                <div>
+                </div>
+            </div>
+
+            <!-- 사업자 정보 form -->
+            <div class="uk-margin-large-top">
+                <form class="uk-form-horizontal uk-margin-large" id="project_info">
+                    <h5>프로젝트 정보</h5>
+                    <hr>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="">프로젝트명</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="project_name" name="project_name" type="text" placeholder="">
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="">프로젝트 주석</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="project_set_id" name="project_set_id" type="text" >
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="">계약기간</label>
+                        <div class="uk-form-controls">
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: calendar"></span>
+                                <input class="uk-input" type="text" id="date_time_start" name="date_time_start">
+                            </div>
+                            <div class="uk-inline uk-margin-left">
+                                <span class="uk-form-icon" uk-icon="icon: calendar"></span>
+                                <input class="uk-input" type="text" id="date_time_end" name="date_time_end">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="">계약금액 (원)</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="project_cost" name="project_cost" type="text" placeholder="" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="">메모</label>
+                        <div class="uk-form-controls">
+                            <textarea class="uk-textarea" rows="10" placeholder="" id="project_memo" name="project_memo"></textarea>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="">상태</label>
+                        <div class="uk-form-controls">
+                            <select class="uk-select w-100" id="project_status" name="project_status">
+                                <option selected="" value="N">정상</option>
+                                <option value="W">대기</option>
+                                <option value="C">완료</option>
+                            </select>
+                        </div>
+                    </div>
+                    <hr>
+                </form>
+            </div>
+
+            <!-- function -->
+            <div class="uk-flex uk-flex-row uk-flex-between uk-margin-large-top">
+                <div>
+                </div>
+                <div>
+                    <button class="uk-button uk-button-default" id="canclebtn" onclick="location.href='/bo-03-1-1'">Cancel</button>
+                    <button class="uk-button uk-button-primary" id="btn_save">Save</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--// Right / Body -->
+
+
+    <!-- date & time picker -->
+    <script>
+        
+        $('#date_time_start').datetimepicker({theme:'dark', timepicker:false, format:'Y-m-d'});
+        
+        $('#date_time_end').datetimepicker({theme:'dark', timepicker:false, format:'Y-m-d'});
+    </script>
+    <script src="/static/js/bo/bo-03-1-2.js"></script>
+
+</body>
+
+</html>

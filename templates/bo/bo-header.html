@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=1240">
+    <meta name="description" content="Total Monitoring System"/>
+
+    <title>GEODATA | TMS Back Office</title>
+    <link rel="shortcut icon" href="/static/img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/static/img/favicon.ico" type="image/x-icon">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/static/css/uikit.min.css" />
+    <link rel="stylesheet" href="/static/css/jquery.datetimepicker.css" />
+    <link rel="stylesheet" href="/static/css/calc.css" />
+    <!-- <link rel="stylesheet" href="/static/css/reset.css" /> -->
+
+    <script src="/static/plugins/js/uikit.min.js"></script>
+    <script src="/static/plugins/js/uikit-icons.min.js"></script>
+    <script src="/static/plugins/js/chart.min.js"></script>
+    <script src="/static/plugins/js/chartjs-plugin-annotation.js"></script>
+    <script src="/static/plugins/js/jquery.js"></script>
+    <script src="/static/plugins/js/jquery.datetimepicker.full.min.js"></script>
+
+    
+    <!-- DataTables -->
+    <!-- <link rel="stylesheet" href="/static/bower_components/datatables.net-bs/css/dataTables.bootstrap.css">
+    <script src="/static/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="/static/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
+    <link type="text/css" href="https://gyrocode.github.io/jquery-datatables-checkboxes/1.2.12/css/dataTables.checkboxes.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://gyrocode.github.io/jquery-datatables-checkboxes/1.2.12/js/dataTables.checkboxes.min.js"></script>
+    <script type="text/javascript" src="//cdn.datatables.net/plug-ins/1.11.3/sorting/natural.js"></script> -->
+
+    <link el="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.uikit.min.css">
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/dataTables.uikit.min.js"></script>
+
+    <script src="/static/js/common/common.js"></script>
+  
+</head>
+
+
+<body>
+    <!-- Header -->
+    <div class="tm-header tm-navbar-container uk-sticky uk-sticky-fixed uk-active uk-sticky-below">
+        <nav class="uk-navbar-container uk-margin" uk-navbar style="background: #000;">
+
+            <div class="uk-navbar-left">
+                <a class="uk-navbar-item uk-logo" href="/bo-02"><span class="icon-logo"></span></a>
+                <ul class="uk-navbar-nav">
+                    <li>
+                        <span class="ins-title">Total Monitoring System Back Office</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="uk-navbar-right">
+                <ul class="uk-navbar-nav">
+                    <li>
+                        <a href="#">{{current_user.user_id}}</a>
+                    </li>
+                    <li>
+                        <a href="#"><span uk-icon="icon: more-vertical; ratio: 1"></span></a>
+                        <div class="uk-navbar-dropdown">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                <li><a href="/">Home</a></li>
+                            </ul>
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                <li><a href="/ws-01">Back Office</a></li>
+                            </ul>
+                            <hr>
+                            <!-- <ul class="uk-list uk-nav-default"></ul> -->
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                <li><a onclick="bologout()">로그아웃</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+    </div>
+    <div class="uk-sticky-placeholder" style="height: 80px; margin: 0px;"></div>
+    <!--// Header -->
+
+
+    <!-- Left / Menu //-->
+    <div class="tm-sidebar-left">
+
+        <!-- footer -->
+        <footer>
+            <span>© GEODATA Co. All rights reserved.</span>
+        </footer>
+
+        <!-- Left / Menu //-->
+        <div>
+            <ul class="uk-list uk-nav-default">
+                <li><a href="/bo-03">고객사 관리</a></li>
+                <li><a href="/bo-04">매출현황</a></li>
+            </ul>
+        </div>
+        <hr>
+        <div>
+            <ul class="uk-list uk-nav-default">
+                <li><a href="/bo-05">알림</a>
+                    <!-- <span class="uk-badge" id="noti_badge">11</span> -->
+                </li>
+                <li id="servicecenter"><a href="/bo-06">고객센터</a></li>
+                <li><a href="/bo-07">공지사항</a></li>
+            </ul>
+        </div>
+        <hr>
+        <div>
+            <ul class="uk-list uk-nav-default">
+                <li><a href="/bo-09">변위공식 관리</a></li>
+            </ul>
+        </div>
+        <hr>
+        <div>
+            <ul class="uk-list uk-nav-default">
+                <li><a href="/bo-08">마스터 계정 설정</a></li>
+            </ul>
+        </div>
+        
+    </div>
+    <!--// Left / Menu -->
+
+    <script src="/static/js/bo/bo-header.js"></script>

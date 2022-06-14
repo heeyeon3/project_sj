@@ -1,0 +1,66 @@
+<!-- ws-05.html -->
+{% include "ws/ws-header.html" %}
+{% include "ws/ws-leftmenu.html" %}
+
+
+    <!-- Right / Body -->
+    <div class="tm-main">
+        <div class="uk-container-full uk-position-relative">
+
+            <!-- state -->
+            <div uk-margin class="uk-flex uk-flex-row uk-flex-between">
+                <div class="uk-text-blue">
+                    <h4>공지사항</h4>
+                </div>
+                <div></div>
+            </div>
+
+            <!-- table -->
+            <div class="uk-overflow-auto uk-margin-medium-top data-tb">
+                <table class="uk-table uk-table-small uk-table-divider fml-lh js-filter" id="data-list">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th class="uk-width-medium">등록일시</th>
+                            <th>제목</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbl_tbody">
+                        <!-- <tr data-state="done">
+                            <td>2</td>
+                            <td>2021.10.10 23:00:59</td>
+                            <td><a href="/ws-05-1">여름휴가일정 공지</a></td>
+                        </tr>
+                        <tr data-state="done">
+                            <td>1</td>
+                            <td>2021.10.10 23:00:59</td>
+                            <td><a href="/ws-05-1">여름휴가일정 공지</a></td>
+                        </tr> -->
+                    </tbody> 
+                </table>
+            </div>
+
+            <!-- pagenation -->
+            <div class="uk-margin-medium-top">
+                <ul class="uk-pagination uk-flex-center" uk-margin id="pagenation">
+                    <!-- <li><a href="#"><span uk-pagination-previous></span></a></li>
+                    <li><a href="#">1</a></li>
+                    <li class="uk-disabled"><span>...</span></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">6</a></li>
+                    <li class="uk-active"><span>7</span></li>
+                    <li><a href="#">8</a></li>
+                    <li><a href="#"><span uk-pagination-next></span></a></li> -->
+                </ul>
+            </div>
+            
+
+        </div>
+    </div>
+    <!--// Right / Body -->
+
+    <script src="/static/js/ws/ws-05.js"></script>
+
+</body>
+
+</html>

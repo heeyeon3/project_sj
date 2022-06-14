@@ -1,0 +1,366 @@
+<!-- bo-09.html -->
+{% include "bo/bo-header.html" %}
+
+
+    <!-- Right / Body -->
+    <div class="tm-main">
+        <div class="uk-container-full uk-position-relative">
+
+
+            <!-- title -->
+            <div uk-margin class="uk-flex uk-flex-row uk-flex-between" style="margin-top: 30px;">
+                <div class="uk-text-blue">
+                    <h4>변위공식 관리</h4>
+                    <a href="/bo-02"><span uk-icon="icon: chevron-left" class="uk-margin-right"></span>대시보드</a>
+                </div>
+                <div>
+                    <a class="uk-button uk-button-primary uk-margin-right" href="#formula" uk-toggle="" aria-expanded="false" onclick="fomulaadd()">변위공식 추가</a>
+                </div>
+            </div>
+            
+
+            <!-- table -->
+            <div class="uk-overflow-auto uk-margin-medium-top data-tb">
+                <table class="uk-table uk-table-small uk-table-divider fml-lh js-filter">
+                    <thead>
+                        <tr>
+                            <th class="w-40">No.</th>
+                            <th class="uk-width-medium">변위공식명</th>
+                            <th>변위공식</th>
+                            <th class="w-120"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="function_tbody">
+                        <!-- <tr data-state="done">
+                            <td>1</td>
+                            <td>변형각(˚)</td>
+                            <td><input class="uk-input" type="text" placeholder="$Sen-# - $Sen-02-iniial" disabled></td>
+                            <td>
+                                <a href="#formula" class="uk-icon-button uk-margin-small-right" uk-icon="file-edit" uk-toggle></a>
+                                <a href="" class="uk-icon-button uk-margin-small-right" uk-icon="trash"></a>     
+                            </td>
+                        </tr> -->
+                        <!-- <tr data-state="done">
+                            <td>2</td>
+                            <td>변화량 1 (MM)</td>
+                            <td><input class="uk-input" type="text" placeholder="$Sen-# - $Sen-02-iniial" disabled></td>
+                            <td>
+                                <a href="#formula" class="uk-icon-button uk-margin-small-right" uk-icon="file-edit" uk-toggle></a>
+                                <a href="" class="uk-icon-button uk-margin-small-right" uk-icon="trash"></a>     
+                            </td>
+                        </tr>
+                        <tr data-state="done">
+                            <td>3</td>
+                            <td>변화량 2 (MM)</td>
+                            <td><input class="uk-input" type="text" placeholder="$Sen-# - $Sen-02-iniial" disabled></td>
+                            <td>
+                                <a href="#formula" class="uk-icon-button uk-margin-small-right" uk-icon="file-edit" uk-toggle></a>
+                                <a href="" class="uk-icon-button uk-margin-small-right" uk-icon="trash"></a>     
+                            </td>
+                        </tr>
+                        <tr data-state="done">
+                            <td>4</td>
+                            <td>변화량 3 (MM)</td>
+                            <td><input class="uk-input" type="text" placeholder="$Sen-# - $Sen-02-iniial" disabled></td>
+                            <td>
+                                <a href="#formula" class="uk-icon-button uk-margin-small-right" uk-icon="file-edit" uk-toggle></a>
+                                <a href="" class="uk-icon-button uk-margin-small-right" uk-icon="trash"></a>     
+                            </td>
+                        </tr>
+                        <tr data-state="done">
+                            <td>5</td>
+                            <td>변화량 4 (MM)</td>
+                            <td><input class="uk-input" type="text" placeholder="$Sen-# - $Sen-02-iniial" disabled></td>
+                            <td>
+                                <a href="#formula" class="uk-icon-button uk-margin-small-right" uk-icon="file-edit" uk-toggle></a>
+                                <a href="" class="uk-icon-button uk-margin-small-right" uk-icon="trash"></a>     
+                            </td>
+                        </tr> -->
+                    </tbody>
+                </table>
+            </div>
+
+
+            <!-- function -->
+            <div class="uk-flex uk-flex-row uk-flex-between uk-margin-large-top">
+                <div>
+                </div>
+                <div>
+                    <!-- <button class="uk-button uk-button-default" onclick="location.href='/ws-10'">Cancel</button>
+                    <button class="uk-button uk-button-primary" onclick="location.href='/bo-02'">Save</button> -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--// Right / Body -->
+
+
+    <!-- Modal / formula-->
+    <div id="formula" uk-modal>
+        <div class="uk-modal-dialog">
+            <button class="uk-modal-close-default" type="button" uk-close></button>
+            <div class="uk-modal-header">
+                <h5 class="uk-modal-title">변위공식</h5>
+                <p class="uk-text-meta">
+                    솔류션 기본 변위공식
+                </p>
+            </div>
+            <div class="uk-modal-body">
+                <fieldset class="uk-fieldset">
+
+                    <div class="uk-margin">
+                        <select class="uk-select" id="fomulaselect">
+                            <!-- <option>변위공식 불러오기</option> -->
+                            <!-- <option>변화량(mm)</option>
+                            <option>변형각(˚)</option> -->
+                        </select>
+                    </div>
+
+                    <div class="uk-margin">
+                        <input class="uk-input" type="text" placeholder="변화량(mm)" id="fomulaname" >
+                    </div>
+
+                    <div class="uk-margin">
+                        <textarea class="uk-textarea" rows="5" placeholder="$Sen-01 * 100%" style="resize: none;" id="calc"  ></textarea>
+                       
+                        <!-- <table border ="1"  class="calc">
+                           
+                            <tr>
+                                <td colspan="2">
+                                <input type="button" value="Clear" onclick="clearDisplay()" style="height:100%;width:100%;"></td>
+                                <td colspan="3">
+                                <input type="button" value="Enter" onclick="sum()" style="height:100%;width:100%;"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="button" value="1" onclick="add('1')" style="height:100%;width:100%;"></td>
+                                <td><input type="button" value="2" onclick="add('2')" style="height:100%;width:100%;"></td> 
+                                <td><input type="button" value="3" onclick="add('3')" style="height:100%;width:100%;"></td>
+                                <td><input type="button" value="+" onclick="add('+')" style="height:100%;width:100%;"></td>
+                                <td><input type="button" value="tan" onclick="tan(this.form.display)" style="height:100%;width:100%;"></td>
+                            </tr>
+                            <tr>
+                                 <td><input type="button" value="4" onclick="add('4')" style="height:100%;width:100%;"></td>
+                                 <td><input type="button" value="5" onclick="add('5')" style="height:100%;width:100%;"></td>
+                                 <td><input type="button" value="6" onclick="add('6')" style="height:100%;width:100%;"></td>
+                                 <td><input type="button" value="-" onclick="add('-')" style="height:100%;width:100%;"></td>
+                                 <td><input type="button" value="sin" onclick="sin(this.form.display)" style="height:100%;width:100%;"></td>
+                            </tr>
+                            <tr>
+                                 <td><input type="button" value="7" onclick="add('7')" style="height:100%;width:100%;"></td>
+                                 <td><input type="button" value="8" onclick="add('8')" style="height:100%;width:100%;"></td>
+                                 <td><input type="button" value="9" onclick="add('9')" style="height:100%;width:100%;"></td>
+                                 <td><input type="button" value="*" onclick="add('*')" style="height:100%;width:100%;"></td>
+                                 <td><input type="button" value="cos" onclick="cos(this.form.display)" style="height:100%;width:100%;"></td>
+                            </tr>
+                            <tr>
+                                 <td><input type="button" value="0" onclick="add('0')" style="height:100%;width:100%;"></td>
+                                 <td><input type="button" value="+/-" onclick="abs(this.form.display)" style="height:100%;width:100%;"></td>
+                                 <td><input type="button" value="." onclick="add('.')" style="height:100%;width:100%;"></td>
+                                 <td><input type="button" value="/" onclick="add('/')" style="height:100%;width:100%;"></td>
+                                 <td><input type="button" value="x^y" onclick="pow(this.form.display)" style="height:100%;width:100%;"></td>
+                            <tr>
+                            </table>
+                             -->
+                       
+                             <table border="1" class="calc" style="width: 100%;">
+                         
+                                <tr>
+                                    <td colspan="2" onclick="caclulation('AC')">AC</td>
+    
+                                    <td onclick="caclulation('(')">(</td>
+                                    <td onclick="caclulation(')')">)</td>
+                                    <td onclick="caclulation('pi')">pi</td>
+                                    <td onclick="caclulation('.')">.</td>
+                                </tr>
+                                <tr>
+                                    <td onclick="caclulation('1')">1</td>
+                                    <td onclick="caclulation('2')">2</td>
+                                    <td onclick="caclulation('3')">3</td>
+                                    <td class="calcpadding" onclick="caclulation('*')">*</td>
+                                    <td class="calcpadding" onclick="caclulation('cos')">cos</td>
+                                    <td class="calcpadding" onclick="caclulation('^')">a^b</td>
+                                </tr>
+                                <tr>
+                                    <td onclick="caclulation('4')">4</td>
+                                    <td onclick="caclulation('5')">5</td>
+                                    <td onclick="caclulation('6')">6</td>
+                                    <td onclick="caclulation('-')">-</td>
+                                    <td onclick="caclulation('sin')">sin</td>
+                                    <td onclick="caclulation('e')">e</td>
+                                </tr>
+                                <tr>
+                                    <td class="calcpadding" onclick="caclulation('7')">7</td>
+                                    <td class="calcpadding"  onclick="caclulation('8')">8</td>
+                                    <td class="calcpadding" onclick="caclulation('9')">9</td>
+                                    <td onclick="caclulation('+')">+</td>
+                                    <td onclick="caclulation('tan')">tan</td>
+                                    <td onclick="caclulation('log')">log</td>
+                                </tr>
+                                <tr>
+                                    <td onclick="caclulation('0')">0</td>
+    
+                                    <td onclick="caclulation('$sen')">$sen</td>
+                                    <td onclick="caclulation('$ini')">$ini</td>
+                                    <td onclick="caclulation('$GF')">$GF</td>
+                                    <td onclick="caclulation('/')">/</td>
+                                    <td onclick="check_function('add')">=</td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+    
+                        <div class="uk-margin-medium-top">
+                            <p>측정값 변수 : $sen </p>
+                            <p>초기값 변수 : $ini </p>
+                            <p>Gauge Factor : $GF </p>
+                            <p>계산 결과값 :  <span id='test_result'>0</span>  <br/>($sen=2500, $ini=2510, Gauge Factor=0.002) </p>
+                
+                        </div>
+
+                </fieldset>
+            </div>
+            <div class="uk-modal-footer uk-text-right">
+                <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+                <button class="uk-button uk-button-primary" type="button" id="savebtn">Save</button>
+                <button class="uk-button uk-button-primary" type="button" id="editbtn">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal / formula-->
+    <div id="formula2" uk-modal>
+        <div class="uk-modal-dialog">
+            <button class="uk-modal-close-default" type="button" uk-close></button>
+            <div class="uk-modal-header">
+                <h5 class="uk-modal-title">변위공식</h5>
+                <p class="uk-text-meta">
+                    솔류션 기본 변위공식
+                </p>
+            </div>
+            <div class="uk-modal-body">
+                <fieldset class="uk-fieldset">
+
+                    <div class="uk-margin">
+                        <select class="uk-select" id="fomulaselect2">
+                            <!-- <option>변위공식 불러오기</option> -->
+                            <!-- <option>변화량(mm)</option>
+                            <option>변형각(˚)</option> -->
+                        </select>
+                    </div>
+
+                    <div class="uk-margin">
+                        <input class="uk-input" type="text" placeholder="변화량(mm)" id="fomulaname2" >
+                    </div>
+
+                    <div class="uk-margin">
+                        <textarea class="uk-textarea" rows="5" placeholder="$Sen-01 * 100%" style="resize: none;" id="calc2" readonly ></textarea>
+                       
+                        <!-- <table border ="1"  class="calc">
+                           
+                            <tr>
+                                <td colspan="2">
+                                <input type="button" value="Clear" onclick="clearDisplay()" style="height:100%;width:100%;"></td>
+                                <td colspan="3">
+                                <input type="button" value="Enter" onclick="sum()" style="height:100%;width:100%;"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="button" value="1" onclick="add('1')" style="height:100%;width:100%;"></td>
+                                <td><input type="button" value="2" onclick="add('2')" style="height:100%;width:100%;"></td> 
+                                <td><input type="button" value="3" onclick="add('3')" style="height:100%;width:100%;"></td>
+                                <td><input type="button" value="+" onclick="add('+')" style="height:100%;width:100%;"></td>
+                                <td><input type="button" value="tan" onclick="tan(this.form.display)" style="height:100%;width:100%;"></td>
+                            </tr>
+                            <tr>
+                                 <td><input type="button" value="4" onclick="add('4')" style="height:100%;width:100%;"></td>
+                                 <td><input type="button" value="5" onclick="add('5')" style="height:100%;width:100%;"></td>
+                                 <td><input type="button" value="6" onclick="add('6')" style="height:100%;width:100%;"></td>
+                                 <td><input type="button" value="-" onclick="add('-')" style="height:100%;width:100%;"></td>
+                                 <td><input type="button" value="sin" onclick="sin(this.form.display)" style="height:100%;width:100%;"></td>
+                            </tr>
+                            <tr>
+                                 <td><input type="button" value="7" onclick="add('7')" style="height:100%;width:100%;"></td>
+                                 <td><input type="button" value="8" onclick="add('8')" style="height:100%;width:100%;"></td>
+                                 <td><input type="button" value="9" onclick="add('9')" style="height:100%;width:100%;"></td>
+                                 <td><input type="button" value="*" onclick="add('*')" style="height:100%;width:100%;"></td>
+                                 <td><input type="button" value="cos" onclick="cos(this.form.display)" style="height:100%;width:100%;"></td>
+                            </tr>
+                            <tr>
+                                 <td><input type="button" value="0" onclick="add('0')" style="height:100%;width:100%;"></td>
+                                 <td><input type="button" value="+/-" onclick="abs(this.form.display)" style="height:100%;width:100%;"></td>
+                                 <td><input type="button" value="." onclick="add('.')" style="height:100%;width:100%;"></td>
+                                 <td><input type="button" value="/" onclick="add('/')" style="height:100%;width:100%;"></td>
+                                 <td><input type="button" value="x^y" onclick="pow(this.form.display)" style="height:100%;width:100%;"></td>
+                            <tr>
+                            </table>
+                             -->
+                       
+                             <table border="1" class="calc" style="width: 100%;">
+                         
+                                <tr>
+                                    <td colspan="2" onclick="caclulation('AC')">AC</td>
+    
+                                    <td onclick="caclulation('(')">(</td>
+                                    <td onclick="caclulation(')')">)</td>
+                                    <td onclick="caclulation('pi')">pi</td>
+                                    <td onclick="caclulation('.')">.</td>
+                                </tr>
+                                <tr>
+                                    <td onclick="caclulation('1')">1</td>
+                                    <td onclick="caclulation('2')">2</td>
+                                    <td onclick="caclulation('3')">3</td>
+                                    <td class="calcpadding" onclick="caclulation('*')">*</td>
+                                    <td class="calcpadding" onclick="caclulation('cos')">cos</td>
+                                    <td class="calcpadding" onclick="caclulation('^')">a^b</td>
+                                </tr>
+                                <tr>
+                                    <td onclick="caclulation('4')">4</td>
+                                    <td onclick="caclulation('5')">5</td>
+                                    <td onclick="caclulation('6')">6</td>
+                                    <td onclick="caclulation('-')">-</td>
+                                    <td onclick="caclulation('sin')">sin</td>
+                                    <td onclick="caclulation('e')">e</td>
+                                </tr>
+                                <tr>
+                                    <td class="calcpadding" onclick="caclulation('7')">7</td>
+                                    <td class="calcpadding"  onclick="caclulation('8')">8</td>
+                                    <td class="calcpadding" onclick="caclulation('9')">9</td>
+                                    <td onclick="caclulation('+')">+</td>
+                                    <td onclick="caclulation('tan')">tan</td>
+                                    <td onclick="caclulation('log')">log</td>
+                                </tr>
+                                <tr>
+                                    <td onclick="caclulation('0')">0</td>
+    
+                                    <td onclick="caclulation('$sen')">$sen</td>
+                                    <td onclick="caclulation('$ini')">$ini</td>
+                                    <td onclick="caclulation('$GF')">$GF</td>
+                                    <td onclick="caclulation('/')">/</td>
+                                    <td onclick="check_function('edit')">=</td>
+                                </tr>
+                            </table>
+                    
+                    
+                    </div>
+
+                    <div class="uk-margin-medium-top">
+                        <p>측정값 변수 : $sen </p>
+                        <p>초기값 변수 : $ini </p>
+                        <p>Gauge Factor : $GF </p>
+                        <p>계산 결과값 :  <span id='test_result2'>0</span>  <br/>($sen=2500, $ini=2510, Gauge Factor=0.002) </p>
+            
+                    </div>
+
+                </fieldset>
+            </div>
+            <div class="uk-modal-footer uk-text-right">
+                <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+                <button class="uk-button uk-button-primary" type="button" id="editbtn">Save</button>
+            </div>
+        </div>
+    </div>
+<script src="/static/js/bo/bo-09.js"></script>
+</body>
+
+</html>

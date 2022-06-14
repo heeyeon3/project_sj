@@ -1,0 +1,60 @@
+<!-- bo-07-2.html -->
+{% include "bo/bo-header.html" %}
+
+    <!-- Right / Body -->
+    <div class="tm-main">
+        <div class="uk-container-full uk-position-relative">
+
+
+            <!-- title -->
+            <div uk-margin class="uk-flex uk-flex-row uk-flex-between" style="margin-top: 30px;">
+                <div class="uk-text-blue">
+                    <h4>공지사항</h4>
+                    <a href="/bo-07"><span uk-icon="icon: chevron-left" class="uk-margin-right"></span>목록</a>
+                </div>
+                <div>
+                </div>
+            </div>
+            
+
+            <!-- form -->
+            <div class="uk-margin-large-top">
+
+                <form class="uk-form-horizontal uk-margin-large">
+                    <hr>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="">제목</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="notice_title" type="text" placeholder="">
+                        </div>
+                    </div>
+
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="">내용</label>
+                        <div class="uk-form-controls">
+                            <textarea class="uk-textarea" rows="20" placeholder="" id="notice_contents"></textarea>
+                        </div>
+                    </div>
+                    <hr>
+                </form>
+            </div>
+
+
+            <!-- function -->
+            <div class="uk-flex uk-flex-row uk-flex-between uk-margin-large-top">
+                <div>
+                </div>
+                <div>
+                    <button class="uk-button uk-button-default" onclick="location.href='/bo-07'" id="canclebtn">Cancel</button>
+                    <button class="uk-button uk-button-primary"  id="savebtn">Save</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--// Right / Body -->
+
+<script src="/static/js/bo/bo-07-2.js"></script>
+</body>
+
+</html>

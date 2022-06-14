@@ -1,0 +1,127 @@
+<!-- bo-03-1.html -->
+{% include "bo/bo-header.html" %}
+
+    <!-- Right / Body -->
+    <div class="tm-main">
+        <div class="uk-container-full uk-position-relative">
+
+
+            <!-- title -->
+            <div uk-margin class="uk-flex uk-flex-row uk-flex-between" style="margin-top: 30px;">
+                <div class="uk-text-blue" id="top_name">
+                    
+                    <!-- <h4 id="top_company_name">성진지오텍<span class="title-id"><a href="/" target=”_blank“ id="top_company_set_id">sungjin</a></span></h4> -->
+                    <a href="/bo-03"><span uk-icon="icon: chevron-left" class="uk-margin-right"></span>고객사 관리</a>
+                </div>
+                <div>
+                    <button class="uk-button uk-button-default" onclick="edit_comapny()" >고객사 정보 수정</button>
+                </div>
+            </div>
+
+            <!-- tap menu / sensor group - line type -->
+            <div class="uk-margin uk-margin-medium-top">
+                <ul class="uk-tab">
+                    <li class="uk-active" id="customer_info_location"></li>
+                    <li id="project_location"></li>
+                    <!-- <li id="project_location"><a href="/bo-03-1-1">Project</a></li> -->
+                </ul>
+            </div>
+
+            <!-- #01 프로젝트 프로필 //-->
+
+            <h5>사업자 정보</h5>
+            <table class="uk-table uk-table-divider uk-table-justify">
+                <thead class="br-t-3">
+                    <tr>
+                        <th class="w-200">등록일시</th>
+                        <th id="create_date"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>상호</td>
+                        <td id="company_name"></td>
+                    </tr>
+                    <tr>
+                        <td>대표자</td>
+                        <td id="company_ceo"></td>
+                    </tr>
+                    <tr>
+                        <td>사업자등록번호</td>
+                        <td id="company_regnum"></td>
+                    </tr>
+                    <tr>
+                        <td>업태</td>
+                        <td id="company_worktype"></td>
+                    </tr>
+                    <tr>
+                        <td>종목</td>
+                        <td id="company_workcate"></td>
+                    </tr>
+                    <tr>
+                        <td>수신 이메일</td>
+                        <td id="company_email"></td>
+                    </tr>
+                    <tr>
+                        <td>대표번호</td>
+                        <td id="company_number"></td>
+                    </tr>
+                    <tr>
+                        <td>팩스번호</td>
+                        <td id="company_faxnum"></td>
+                    </tr>
+                    <tr>
+                        <td>주소</td>
+                        <td id="company_address"></td>
+                    </tr>
+                    <tr class="br-b-3"></tr>
+                </tbody>
+            </table>
+
+            <h5>담당자 정보</h5>
+            <table class="uk-table uk-table-divider uk-table-justify">
+                <tbody>
+                    <tr class="br-b-3"></tr>
+                    <tr>
+                        <td class="w-200">이름</td>
+                        <td id="company_picname"></td>
+                    </tr>
+                    <tr>
+                        <td>연락처</td>
+                        <td id="company_picnum"></td>
+                    </tr>
+                    <tr>
+                        <td>이메일</td>
+                        <td id="company_picemail"></td>
+                    </tr>
+                    <tr class="br-b-3"></tr>
+                </tbody>
+            </table>
+            
+            <!-- <h5>배경 이미지</h5>
+            <table class="uk-table uk-table-divider uk-table-justify">
+                <tbody>
+                    <tr class="br-b-3"></tr>
+                    <tr>
+                        <td class="w-200">배경 이미지 파일</td>
+                        <td id="company_img"></td>
+                    </tr>
+                    <tr class="br-b-3"></tr>
+                </tbody>
+            </table> -->
+            <!--// #01 프로젝트 프로필 -->
+
+        </div>
+    </div>
+    <!--// Right / Body -->
+
+    <script>
+        function btn() {
+          alert("마스터 계정이 수정되었습니다.");
+          window.location = '/bo-02';
+      }
+  </script>
+<script src="/static/js/bo/bo-03-1.js"></script>
+</body>
+
+</html>

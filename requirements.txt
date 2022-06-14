@@ -1,0 +1,27 @@
+Flask
+Flask-Alembic
+Flask-JWT-Extended==3.24.1
+Flask-Migrate
+Flask-RESTful
+Flask-SQLAlchemy
+Flask-Login
+openpyxl
+Jinja2
+SQLAlchemy
+Werkzeug==2.0.0
+flask_script
+PyMysqlDB
+mysqlclient
+apscheduler
+requests
+pandas
+opencv-python
+pika
+python-daemon
+python-dateutil
+psycopg2-binary
+pandas
+pymysql
+# math
+# lxml
+mysql-connector

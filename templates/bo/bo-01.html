@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=1240">
+    <meta name="description" content="Total Monitoring System"/>
+
+    <title>GEODATA | TMS Back Office</title>
+    <link rel="shortcut icon" href="/static/img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/static/img/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/static/css/uikit.min.css" />
+    <link rel="stylesheet" href="/static/css/jquery.datetimepicker.css" />
+
+    <script src="/static/plugins/js/uikit.min.js"></script>
+    <script src="/static/plugins/js/uikit-icons.min.js"></script>
+    <script src="/static/plugins/js/chart.min.js"></script>
+    <script src="/static/plugins/js/chartjs-plugin-annotation.js"></script>
+    <script src="/static/plugins/js/jquery.js"></script>
+    <script src="/static/plugins/js/jquery.datetimepicker.full.min.js"></script>
+</head>
+
+
+<body>
+    <!-- Header //-->
+    <div class="tm-header tm-navbar-container uk-sticky uk-sticky-fixed uk-active uk-sticky-below">
+        <nav class="uk-navbar-container uk-margin" uk-navbar style="background: #000;">
+
+            <div class="uk-navbar-left">
+                <a class="uk-navbar-item uk-logo" style="cursor:default;"><span class="icon-logo"></span></a>
+                <ul class="uk-navbar-nav">
+                    <li>
+                        <span class="ins-title">Total Monitoring System Back Office</span>
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+    </div>
+    <div class="uk-sticky-placeholder" style="height: 80px; margin: 0px;"></div>
+    <!--// Header -->
+
+    <!-- Body //-->
+    <div class="uk-flex uk-flex-center uk-flex-middle" style="height: calc(100% - 160px);">
+    <!-- <div class="uk-flex uk-flex-center uk-flex-middle" style="height: calc(100% - 80px);"> -->
+
+        <!-- login -->
+        <div class="uk-card uk-card-primary uk-card-hover uk-card-body w-297" style="z-index: 100">
+            <div class="uk-margin">
+                <span class="icon-logo-w"></span>
+                <h3 class="uk-card-title">Login</h3>
+            </div>
+
+            <form method="post" action="" id="frmLogin">
+            <div class="uk-margin">
+                <div class="uk-inline">
+                    <span class="uk-form-icon icon-b05" uk-icon="icon: user"></span>
+                    <input class="uk-input bg-w br-0" style="color: #000 !important;" type="text" id="user_id" name="user_id">
+                </div>
+            </div>
+            <div class="uk-margin">
+                <div class="uk-inline">
+                    <span class="uk-form-icon icon-b05" uk-icon="icon: lock"></span>
+                    <input class="uk-input bg-w br-0"  style="color: #000 !important;" type="password" id="user_pwd" name="user_pwd">
+                </div>
+            </div>
+            </form>
+            <div class="uk-margin-large">
+                <button class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom" onClick="bologin();"><span class="ft-b">Login</span></button>
+            </div>
+            <div class="uk-flex uk-flex-center" style="margin-top: -40px">
+                <span class="ft-12">© GEODATAh Co., Ltd.</span>
+            </div>
+        </div>
+
+        <div class="prj-bg" style="background: linear-gradient(to bottom, rgba(0,0,0,.90), rgba(0,0,0,.40)), url(static/img/bg/back-office-bg.jpg) no-repeat center center/cover; filter: grayscale(100%);"></div>
+
+    </div>
+    <!--// Body -->
+
+<!-- page script 시작 -->
+<script src="/static/js/common/common.js"></script>
+
+
+</body>
+
+</html>

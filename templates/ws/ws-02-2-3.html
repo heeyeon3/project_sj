@@ -1,0 +1,389 @@
+<!-- ws-02-2-3.html -->
+{% include "ws/ws-header.html" %}
+{% include "ws/ws-leftmenu.html" %}
+
+
+    <!-- Right / Body -->
+    <div class="tm-main">
+        <div class="uk-container-full uk-position-relative">
+
+            <!-- title -->
+            <div>
+                <h4 class="uk-heading-divider" id="topname"></h4>
+            </div>
+
+            <!-- date & time picker -->
+            <div class="uk-margin uk-flex uk-flex-left uk-flex-row">
+                <div>
+                    <span class="ft-w" style="line-height: 40px;">Data Filter</span>
+                </div>
+                <div class="uk-margin-left">
+                    <div class="uk-inline">
+                        <span class="uk-form-icon" uk-icon="icon: calendar"></span>
+                        <input class="uk-input" type="text" id="date_time_start">
+                    </div>
+                </div>
+                <div class="uk-margin-left">
+                    <div class="uk-inline">
+                        <span class="uk-form-icon" uk-icon="icon: calendar"></span>
+                        <input class="uk-input" type="text" id="date_time_end">
+                    </div>
+                </div>
+                <div class="uk-margin-left" >
+                    <span style="line-height: 40px;"></span>
+                </div>
+                <div class="uk-margin-left" >
+                    <select class="uk-select w-100" id="time">
+                        <option selected="" value="">시각</option>
+                        <option value="01">1시</option>
+                        <option value="02">2시</option>
+                        <option value="03">3시</option>
+                        <option value="04">4시</option>
+                        <option value="05">5시</option>
+                        <option value="06">6시</option>
+                        <option value="07">7시</option>
+                        <option value="08">8시</option>
+                        <option value="09">9시</option>
+                        <option value="10">10시</option>
+                        <option value="11">11시</option>
+                        <option value="12">12시</option>
+                        <option value="13">13시</option>
+                        <option value="14">14시</option>
+                        <option value="15">15시</option>
+                        <option value="16">16시</option>
+                        <option value="17">17시</option>
+                        <option value="18">18시</option>
+                        <option value="19">19시</option>
+                        <option value="20">20시</option>
+                        <option value="21">21시</option>
+                        <option value="22">22시</option>
+                        <option value="23">23시</option>
+                        <option value="00">24시</option>
+                    </select>
+                </div>
+                <div class="" >
+                    <span style="line-height: 40px;"></span>
+                </div>
+                <div class="uk-margin-left">
+                    <select class="uk-select w-100" id="intervalday">
+                        <option selected="" value="">평균</option>
+                        <option value="1">1일</option>
+                        <option value="2">2일</option>
+                        <option value="3">3일</option>
+                        <option value="4">4일</option>
+                        <option value="5">5일</option>
+                        <option value="6">6일</option>
+                        <option value="7">7일</option>
+                        <option value="8">8일</option>
+                        <option value="9">9일</option>
+                        <option value="10">10일</option>
+                        <option value="11">11일</option>
+                        <option value="12">12일</option>
+                        <option value="13">13일</option>
+                        <option value="14">14일</option>
+                        <option value="15">15일</option>
+                    </select>
+                </div>
+                <div class="uk-margin-left">
+                   <button class="uk-button uk-button-primary" type="button" onclick="searchdata()">Apply</button>
+                   <button class="uk-button uk-button-primary" type="button" onclick="resetbtn()">Reset</button>
+                </div>
+            </div>
+
+            <!-- tap menu (sensor) -->
+            <div class="uk-margin uk-margin-medium-top">
+                <ul class="uk-tab">
+                    <li><a id="chart" onclick="chartlocation()">Chart</a></li>
+                    <li class="uk-active"><a id="data" onclick="datalocation()">Data</a></li>
+                    <!-- <li class="uk-active"><a href="ws-02-2-3" id="data">Data<span class="uk-badge-red">231</span></a></li> -->
+                    <li id="fomulali" style="display: none;"><a id="formula_btn" style="display: none;"  onclick="fomulalocation()">Formula</a></li>
+                    <li><a id="info" onclick="infolocation()">Info</a></li>
+                </ul>
+            </div>
+
+            <!-- chart / sensor group -->
+            <div uk-margin class="uk-flex uk-flex-row uk-flex-between">
+                <div class="uk-text-blue">
+                    <h4></h4>
+                    <!-- <h4>변화량 (mm)</h4> -->
+                    <p class="mg-v-0" id="initialdateandvalue">Initial Date:</p>
+                    <!-- <p class="mg-v-0" id="gaugefactorandvalue">Gauge Factor:</p> -->
+                </div>
+                <!-- <div> -->
+                    <!-- <select class="uk-select" style="width: 100px;" id="tablelen">
+                        <option value="15">15</option>
+                        <option value="30">30</option>
+                        <option value="60">60</option>
+                        <option value="90">90</option>
+                        <option value="120">120</option>
+                        <option value="150">150</option>
+                    </select> -->
+                <!-- </div> -->
+            </div>
+
+            <!-- Data -->
+            <div class="uk-overflow-auto uk-margin-medium-top data-tb">
+                <table class="uk-table uk-table-small uk-table-divider uk-table-striped" id="data-list">
+                    <thead>
+                        <tr id="tabletr">
+                            <!-- <th><a class="selected" onclick="orderling(0)">측정일시<span uk-icon="icon: chevron-down" id="order_0"></span></a></th> -->
+                            <th>측정일시</th>
+                            <th>측정치</th>
+                            <!-- <th><a href="#">변형각(˚)</a></th>
+                            <th><a href="#">변화량 1 (mm)</a></th>
+                            <th><a href="#">변화량 2 (mm)</a></th>
+                            <th><a href="#">변화량 3 (mm)</a></th>
+                            <th><a href="#">변화량 4 (mm)</a></th>
+                            <th><a href="#" class="selected">기온<span uk-icon="icon: chevron-up"></span></a></th>
+                            <th><a href="#">강수량</a></th> -->
+                        </tr>
+                        
+                    </thead>
+                    <tbody id="datatbletbody">
+                        <!-- <tr>
+                            <td>2021.08.13 16:00</td>
+                            <td>17790<a href="#data-modify" class="uk-icon-link uk-margin-small-left" uk-icon="pencil" uk-toggle></a></td>
+                            <td>-0.0060423</td>
+                            <td>-0.210916058396</td>
+                            <td>-0.210916058396</td>
+                            <td>-0.210916058396</td>
+                            <td>-0.210916058396</td>
+                            <td>30 ℃</td>
+                            <td>10 mm</td>
+                        </tr>
+                        <tr>
+                            <td>2021.08.12 16:00</td>
+                            <td>17790<a href="#data-modify" class="uk-icon-link uk-margin-small-left" uk-icon="pencil" uk-toggle></a></td>
+                            <td>-0.0060423</td>
+                            <td>-0.210916058396</td>
+                            <td>-0.210916058396</td>
+                            <td>-0.210916058396</td>
+                            <td>-0.210916058396</td>
+                            <td>30 ℃</td>
+                            <td>10 mm</td>
+                        </tr>
+                        <tr>
+                            <td>2021.08.11 16:00</td>
+                            <td>17790<a href="#data-modify" class="uk-icon-link uk-margin-small-left" uk-icon="pencil" uk-toggle></a></td>
+                            <td>-0.0060423</td>
+                            <td>-0.210916058396</td>
+                            <td>-0.210916058396</td>
+                            <td>-0.210916058396</td>
+                            <td>-0.210916058396</td>
+                            <td>30 ℃</td>
+                            <td>10 mm</td>
+                        </tr>
+                        <tr>
+                            <td>2021.08.10 16:00</td>
+                            <td>17790<a href="#data-modify" class="uk-icon-link uk-margin-small-left" uk-icon="pencil" uk-toggle></a></td>
+                            <td>-0.0060423</td>
+                            <td>-0.210916058396</td>
+                            <td>-0.210916058396</td>
+                            <td>-0.210916058396</td>
+                            <td>-0.210916058396</td>
+                            <td>30 ℃</td>
+                            <td>10 mm</td>
+                        </tr>
+                        <tr>
+                            <td>2021.08.09 16:00</td>
+                            <td>17790<a href="#data-modify" class="uk-icon-link uk-margin-small-left" uk-icon="pencil" uk-toggle></a></td>
+                            <td>-0.0060423</td>
+                            <td>-0.210916058396</td>
+                            <td>-0.210916058396</td>
+                            <td>-0.210916058396</td>
+                            <td>-0.210916058396</td>
+                            <td>30 ℃</td>
+                            <td>10 mm</td>
+                        </tr>
+                        <tr>
+                            <td>2021.08.08 16:00</td>
+                            <td>17790<a href="#data-modify" class="uk-icon-link uk-margin-small-left" uk-icon="pencil" uk-toggle></a></td>
+                            <td>-0.0060423</td>
+                            <td>-0.210916058396</td>
+                            <td>-0.210916058396</td>
+                            <td>-0.210916058396</td>
+                            <td>-0.210916058396</td>
+                            <td>30 ℃</td>
+                            <td>10 mm</td>
+                        </tr>
+                        <tr>
+                            <td>2021.08.07 16:00</td>
+                            <td>17790<a href="#data-modify" class="uk-icon-link uk-margin-small-left" uk-icon="pencil" uk-toggle></a></td>
+                            <td>-0.0060423</td>
+                            <td>-0.210916058396</td>
+                            <td>-0.210916058396</td>
+                            <td>-0.210916058396</td>
+                            <td>-0.210916058396</td>
+                            <td>30 ℃</td>
+                            <td>10 mm</td>
+                        </tr>
+                        <tr>
+                            <td>2021.08.06 16:00</td> 빨깅섹
+                            <td>17790<a href="#data-modify" class="uk-icon-link uk-margin-small-left" uk-icon="pencil" uk-toggle></a></td>
+                            <td>-0.0060423</td>
+                            <td>-0.210916058396</td>
+                            <td>-0.210916058396</td>
+                            <td>-0.210916058396</td>
+                            <td>-0.210916058396</td>
+                            <td>30 ℃</td>
+                            <td>10 mm</td>
+                        </tr>
+                        <tr>
+                            <td>2021.08.05 16:00</td> 주황색
+                            <td>17790<a href="#data-modify" class="uk-icon-link uk-margin-small-left" uk-icon="pencil" uk-toggle></a></td>
+                            <td>-0.0060423</td>
+                            <td>-0.210916058396</td>
+                            <td>-0.210916058396</td>
+                            <td>-0.210916058396</td>
+                            <td>-0.210916058396</td>
+                            <td>30 ℃</td>
+                            <td>10 mm</td>
+                        </tr>
+                        <tr>
+                            <td>2021.08.04 16:00</td> 노란색
+                            <td>17790<a href="#data-modify" class="uk-icon-link uk-margin-small-left" uk-icon="pencil" uk-toggle></a></td>
+                            <td>-0.0060423</td>
+                            <td>-0.210916058396</td>
+                            <td>-0.210916058396</td>
+                            <td>-0.210916058396</td>
+                            <td>-0.210916058396</td>
+                            <td>30 ℃</td>
+                            <td>10 mm</td>
+                        </tr>
+                        <tr>
+                            <td>2021.08.03 16:00</td>  파란색
+                            <td class="uk-text-red">17790<a href="#data-modify" class="uk-icon-link uk-margin-small-left" uk-icon="pencil" uk-toggle></a></td>
+                            <td>-0.0060423</td>
+                            <td>-0.210916058396</td>
+                            <td>-0.210916058396</td>
+                            <td>-0.210916058396</td>
+                            <td>-0.210916058396</td>
+                            <td>30 ℃</td>
+                            <td>10 mm</td>
+                        </tr>
+                        <tr>
+                            <td>2021.08.02 16:00</td>
+                            <td class="uk-text-orange">17790<a href="#data-modify" class="uk-icon-link uk-margin-small-left" uk-icon="pencil" uk-toggle></a></td>
+                            <td>-0.0060423</td>
+                            <td>-0.210916058396</td>
+                            <td>-0.210916058396</td>
+                            <td>-0.210916058396</td>
+                            <td>-0.210916058396</td>
+                            <td>30 ℃</td>
+                            <td>10 mm</td>
+                        </tr>
+                        <tr>
+                            <td>2021.08.01 16:00</td>
+                            <td class="uk-text-yellow">17790<a href="#data-modify" class="uk-icon-link uk-margin-small-left" uk-icon="pencil" uk-toggle></a></td>
+                            <td>-0.0060423</td>
+                            <td>-0.210916058396</td>
+                            <td>-0.210916058396</td>
+                            <td>-0.210916058396</td>
+                            <td>-0.210916058396</td>
+                            <td>30 ℃</td>
+                            <td>10 mm</td>
+                        </tr>
+                        <tr>
+                            <td>2021.08.01 16:00</td>
+                            <td class="uk-text-blue">17790<a href="#data-modify" class="uk-icon-link uk-margin-small-left" uk-icon="pencil" uk-toggle></a></td>
+                            <td>-0.0060423</td>
+                            <td>-0.210916058396</td>
+                            <td>-0.210916058396</td>
+                            <td>-0.210916058396</td>
+                            <td>-0.210916058396</td>
+                            <td>30 ℃</td>
+                            <td>10 mm</td>
+                        </tr>
+                        <tr>
+                            <td>2021.08.01 16:00</td>
+                            <td>17790<a href="#data-modify" class="uk-icon-link uk-margin-small-left" uk-icon="pencil" uk-toggle></a></td>
+                            <td>-0.0060423</td>
+                            <td>-0.210916058396</td>
+                            <td>-0.210916058396</td>
+                            <td>-0.210916058396</td>
+                            <td>-0.210916058396</td>
+                            <td>30 ℃</td>
+                            <td>10 mm</td>
+                        </tr> -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- pagenation -->
+            <div class="uk-margin-medium-top">
+                <ul class="uk-pagination uk-flex-center" uk-margin id="pagenation">
+                    <!-- <li><a href="#"><span uk-pagination-previous></span></a></li>
+                    <li><a href="#">1</a></li>
+                    <li class="uk-disabled"><span>...</span></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">6</a></li>
+                    <li class="uk-active"><span>7</span></li>
+                    <li><a href="#">8</a></li>
+                    <li><a href="#"><span uk-pagination-next></span></a></li> -->
+                </ul>
+            </div>
+            
+            <!-- function -->
+            <!-- <div class="uk-flex uk-flex-row uk-flex-between uk-margin-large-top"> -->
+            <div class="uk-flex uk-flex-row uk-margin-large-top">
+                <div class="js-upload" uk-form-custom>
+                    <!-- <input type="file" multiple> -->
+                    <button class="uk-button uk-button-default" id="reportbtn" onclick="pdfdown()">Report</button>
+                    <button class="uk-button uk-button-default" id="excelbtn" onclick="exceldown()">Excel</button>
+                    <button class="uk-button uk-button-default" id="originaldata" onclick="exceldownorigin()" style="display: none;">Original Data</button>
+                    <button class="uk-button uk-button-default" id="recorddata" onclick="exceldownrecod()" style="display: none;">Record Data</button>
+                    <!-- <button class="uk-button uk-button-default" id="Upload">Upload</button> -->
+                </div>
+                <div style="margin-left: 5px;">
+                        <button class="uk-button uk-button-default" id="Upload" style="display: none;">Upload</button>
+                        <input type="file" id="my-input" style="display:none" onchange="uploadFile(this)"> 
+                </div>
+                <!-- <div><a href="" uk-totop></a></div> -->
+            </div>
+
+        </div>
+    </div>
+    <!--// Right / Body -->
+</body>
+
+<!-- Modal / Data Modify-->
+<div id="data-modify" uk-modal>
+    <div class="uk-modal-dialog">
+        <button class="uk-modal-close-default" type="button" uk-close id="closebtn"></button>
+        <div class="uk-modal-header">
+            <h5 class="uk-modal-title"></h5>
+            <p class="uk-text-meta" id="selectdate"></p>
+        </div>
+        <div class="uk-modal-body">
+            <fieldset class="uk-fieldset">
+
+                <div class="uk-margin">
+                    <input class="uk-input" type="text" id="editdatavalue">
+                </div>
+
+            </fieldset>
+        </div>
+        <div class="uk-modal-footer uk-text-right">
+            <button class="uk-button uk-button-default uk-modal-close" type="button" id="canclebtn">Cancel</button>
+            <button class="uk-button uk-button-primary" type="button" onclick="savebtn()">Save</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<!-- date & time picker -->
+<script>
+    $('#date_time_start').datetimepicker({theme:'dark', step:60, format:'Y.m.d H:i', maxDate:'0'});
+    $('#date_time_end').datetimepicker({theme:'dark', step:60, format:'Y.m.d H:i', maxDate:'0'});
+    $('#initial_datetime').datetimepicker({theme:'dark', step:60, format:'Y.m.d H:i', maxDate:'0'});
+</script>
+
+<script src="/static/js/ws/ws-02-2-3.js"></script>
+
+</body>
+
+</html>

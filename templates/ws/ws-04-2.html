@@ -1,0 +1,77 @@
+<!-- ws-04-2.html -->
+{% include "ws/ws-header.html" %}
+{% include "ws/ws-leftmenu.html" %}
+
+
+
+    <!-- Right / Body -->
+    <div class="tm-main">
+        <div class="uk-container-full uk-position-relative">
+
+            <!-- state -->
+            <div uk-margin class="uk-flex uk-flex-row uk-flex-between">
+                <div class="uk-text-blue">
+                    <h4>고객센터</h4>
+                    <a href="/ws-04" id="toplocation"><span uk-icon="icon: chevron-left" class="uk-margin-right"></span>목록</a>
+                </div>
+                <div>
+                </div>
+            </div>
+
+
+            <!-- form -->
+            <div class="uk-margin-large-top">
+
+                <form class="uk-form-horizontal uk-margin-large" id="inquiry">
+                    <hr>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="">제목</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="servicecenter_name" name="servicecenter_name" type="text" placeholder="">
+                        </div>
+                    </div>
+
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="">문의내용</label>
+                        <div class="uk-form-controls">
+                            <textarea class="uk-textarea" rows="20" placeholder="" id="servicecenter_inquiry" name="servicecenter_inquiry"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="">첨부파일</label>
+                        <div class="pd-l-15" uk-form-custom="target: true">
+                            <input type="file" id="servicecenter_file" name="servicecenter_file">
+                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Select file" disabled>
+                        </div>
+                        <!-- <button type="button" class="uk-button uk-button-default" id="sendButton">Submit</button> -->
+                    </div>
+
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for=""></label>
+                        <label for=""> 첨부파일은 20MB 이하, 확장자는 엑셀(xlsx, xls), 압축파일(zip), 이미지(png, jpg, jpeg)만 첨부 가능합니다.</label>
+                        <!-- <button type="button" class="uk-button uk-button-default" id="sendButton">Submit</button> -->
+                    </div>
+                    <hr>
+                </form>
+            </div>
+
+
+            <!-- function -->
+            <div class="uk-flex uk-flex-row uk-flex-between uk-margin-large-top">
+                <div>
+                </div>
+                <div>
+                    <button class="uk-button uk-button-default"  id="cancle_btn">Cancel</button>
+                    <button class="uk-button uk-button-primary"  id="send_btn">Send</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--// Right / Body -->
+
+<script src="/static/js/ws/ws-04-2.js"></script>
+</body>
+
+</html>

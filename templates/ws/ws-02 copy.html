@@ -1,0 +1,135 @@
+<!-- ws-02.html -->
+{% include "ws/ws-header.html" %}
+{% include "ws/ws-leftmenu.html" %}
+
+
+    <!-- Right / Body //-->
+    <div class="tm-main">
+
+        <div class="uk-container-full uk-position-relative">
+            <div style="margin-bottom: 20px;">
+                <label><input class="uk-radio uk-margin-right" type="radio" value="floorplan" name ="main_img" checked>현장도면</label>
+                <label><input class="uk-radio uk-margin-right" type="radio" value="googlemap" name ="main_img" style="margin-left: 50px;">구글 맵</label>
+                <!-- <a class="uk-button uk-button-default" href="#label_modal" style="margin-bottom: 20px; float: right;" uk-toggle>EDIT</a> -->
+                <a class="uk-button uk-button-default" href="#label_modal" style="margin-bottom: 20px; float: right;" uk-toggle id="floorplan_edit_btn">EDIT</a>
+            </div>
+            
+            <div id="floorplan">
+
+                <!-- image map //-->
+                <div class="btn bg-b" style="left: 606px; top: 381px;" onClick="location.href='/ws-02-2-1?project_id=6&sensor_id=19&datarogger_id=20&sensor_name=T-1(X)&sensorgroup_type=0201'">T-1(X)</div>
+                <div class="btn bg-b" style="left: 621px; top: 419px;" onClick="location.href='/ws-02-2-1?project_id=6&sensor_id=35&datarogger_id=20&sensor_name=T-1(Y)&sensorgroup_type=0201'">T-1(Y)</div>
+                <div class="btn bg-b" style="left: 592px; top: 345px;" onClick="location.href='/ws-02-2-1?project_id=6&sensor_id=20&datarogger_id=20&sensor_name=C-1&sensorgroup_type=0201'">C-1</div>
+
+                <div class="btn bg-b" style="left: 514px; top: 113px;" onClick="location.href='/ws-02-2-1?project_id=6&sensor_id=21&datarogger_id=21&sensor_name=T-2(X)&sensorgroup_type=0201'">T-2(X)</div>
+                <div class="btn bg-b" style="left: 536px; top: 151px;" onClick="location.href='/ws-02-2-1?project_id=6&sensor_id=31&datarogger_id=21&sensor_name=T-2(Y)&sensorgroup_type=0201'">T-2(Y)</div>
+                <div class="btn bg-b" style="left: 494px; top: 75px;" onClick="location.href='/ws-02-2-1?project_id=6&sensor_id=22&datarogger_id=21&sensor_name=C-2&sensorgroup_type=0201'">C-2</div>
+
+                <div class="btn bg-b" style="left: 554px; top: 234px;" onClick="location.href='/ws-02-2-1?project_id=6&sensor_id=23&datarogger_id=19&sensor_name=T-3(X)&sensorgroup_type=0201'">T-3(X)</div>
+                <div class="btn bg-b" style="left: 559px; top: 270px;" onClick="location.href='/ws-02-2-1?project_id=6&sensor_id=32&datarogger_id=19&sensor_name=T-3(Y)&sensorgroup_type=0201'">T-3(Y)</div>
+                <div class="btn bg-b" style="left: 560px; top: 199px;" onClick="location.href='/ws-02-2-1?project_id=6&sensor_id=24&datarogger_id=19&sensor_name=C-3&sensorgroup_type=0201'">C-3</div>
+
+                <div class="btn bg-b" style="left: 387px; top: 418px;" onClick="location.href='/ws-02-2-1?project_id=6&sensor_id=25&datarogger_id=22&sensor_name=T-4(X)&sensorgroup_type=0201'">T-4(X)</div>
+                <div class="btn bg-b" style="left: 440px; top: 418px;" onClick="location.href='/ws-02-2-1?project_id=6&sensor_id=33&datarogger_id=22&sensor_name=T-4(Y)&sensorgroup_type=0201'">T-4(Y)</div>
+                <div class="btn bg-b" style="left: 410px; top: 377px;" onClick="location.href='/ws-02-2-1?project_id=6&sensor_id=26&datarogger_id=22&sensor_name=C-4&sensorgroup_type=0201'">C-4</div>
+
+                <div class="btn bg-b" style="left: 406px; top: 290px;" onClick="location.href='/ws-02-2-1?project_id=6&sensor_id=27&datarogger_id=23&sensor_name=T-5(X)&sensorgroup_type=0201'">T-5(X)</div>
+                <div class="btn bg-b" style="left: 402px; top: 320px;" onClick="location.href='/ws-02-2-1?project_id=6&sensor_id=34&datarogger_id=23&sensor_name=T-5(Y)&sensorgroup_type=0201'">T-5(Y)</div>
+                <div class="btn bg-b" style="left: 411px; top: 266px;" onClick="location.href='/ws-02-2-1?project_id=6&sensor_id=28&datarogger_id=23&sensor_name=C-5&sensorgroup_type=0201'">C-5</div>
+
+                <div class="btn bg-b" style="left: 345px; top: 190px;" onClick="location.href='/ws-02-2-1?project_id=6&sensor_id=29&datarogger_id=24&sensor_name=T-6(X)&sensorgroup_type=0201'">T-6(X)</div>
+                <div class="btn bg-b" style="left: 354px; top: 229px;" onClick="location.href='/ws-02-2-1?project_id=6&sensor_id=36&datarogger_id=24&sensor_name=T-6(Y)&sensorgroup_type=0201'">T-6(Y)</div>
+                <div class="btn bg-b" style="left: 340px; top: 153px;" onClick="location.href='/ws-02-2-1?project_id=6&sensor_id=30&datarogger_id=24&sensor_name=C-6&sensorgroup_type=0201'">C-6</div>
+
+                
+
+                <img id="img_cont" src="/static/img/map/map1.jpeg">
+                
+                <!--// image map -->
+            </div>
+
+
+            <div id="google_map_area" style="display: none;">
+
+                <!--// image map -->
+            </div>
+
+            
+        </div>
+
+    </div>
+    <!--// Right / Body -->
+
+
+    <!-- Modal / Formula -->
+    <div id="label_modal" uk-modal>
+        <div class="uk-modal-dialog">
+            <button class="uk-modal-close-default" type="button" uk-close></button>
+            <div class="uk-modal-header">
+                <h5 class="uk-modal-title">Formula</h5>
+                <p class="uk-text-meta">도상침하계(상-X축)</p>
+
+            </div>
+            <div class="uk-modal-body">
+                <form class="uk-form-horizontal uk-margin-large">
+                    <div class="uk-margin" uk-margin>
+                        <p>변화량(mm)</p>
+                    </div>
+                    <hr>
+                    <div class="uk-margin" uk-margin>
+                        <label class="uk-form-label" for="form-horizontal-select">가중치 (%)</label>
+                        <div uk-form-custom="target: true">
+                            <input class="uk-input uk-form-width-medium" type="text" placeholder="">
+                        </div>
+                        <button class="uk-button uk-button-default">Default</button>
+                    </div>
+                    <hr>
+                    <div class="uk-margin" uk-margin>
+                        <label class="uk-form-label" for="form-horizontal-select">상수 (100 ~ 500)</label>
+                        <div uk-form-custom="target: true">
+                            <input class="uk-input uk-form-width-medium" type="text" placeholder="">
+                        </div>
+                        <button class="uk-button uk-button-default">Default</button>
+                    </div>
+                    <hr>
+                    <div class="uk-margin" uk-margin>
+                        <label class="uk-form-label" for="form-horizontal-select">변화량 (mm)</label>
+                        <div uk-form-custom="target: true">
+                            <input class="uk-input uk-form-width-medium" type="text" placeholder="">
+                        </div>
+                        <button class="uk-button uk-button-default">Default</button>
+                    </div>
+                </form>
+            </div>
+            <div class="uk-modal-footer uk-text-right">
+                <button class="uk-button uk-button-default uk-modal-close" type="button" id="canclebtn">Cancel</button>
+                <button class="uk-button uk-button-primary" type="button">Save</button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Notification //-->
+    <div class="uk-alert-primary pos-noti" uk-alert id="notification">
+        <a class="uk-alert-close" uk-close></a>
+        <p>서비스 이용 기간이 얼마 남지 않았습니다. 기간 연장이 필요하실 경우 담당자에게 연락해 주시기 바랍니다.</p>
+    </div>
+    <!--// Notification -->
+
+<script src="/static/js/ws/ws-02.js"></script>
+
+<!-- GOOGLE MAP API (현재 API KEY : JUN) (DOM ELEMENT 뒤에 존재해야함!)--> 
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+<script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDd7FRwIC1iTX8SoT-ACMeZO8NRwLBb0l8&callback=GoogleMap&v=weekly"
+      async
+    ></script>
+<!— GOOGLE MAP API 끝 —> 
+
+
+</body>
+<style>
+    .map-label{background-color: black; background-size: 30px; padding: 5px; border-radius: 100%;} 
+</style>
+</html>

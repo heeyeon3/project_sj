@@ -1,0 +1,414 @@
+<!-- ws-10-6.html -->
+{% include "ws/ws-header.html" %}
+{% include "ws/ws-leftmenu.html" %}
+
+    <!-- Right / Body -->
+    <div class="tm-main">
+        <div class="uk-container-full uk-position-relative">
+
+
+            <!-- title -->
+            <div uk-margin class="uk-flex uk-flex-row uk-flex-between">
+                <div class="uk-text-blue">
+                    <h4>센서 설정</h4>
+                    <a href="/ws-10" id="topproject"><span uk-icon="icon: chevron-left" class="uk-margin-right"></span>프로젝트 설정</a>
+                </div>
+                <div>
+                    <a class="uk-button uk-button-default uk-margin-right" href="#sensor-batch" uk-toggle onclick="sensormodal()">일괄설정</a>
+                    <select class="uk-select" style="width: 400px;" id="dataloggerlist" >
+                        <!-- <option>Data-Logger-01.txt</option>
+                        <option>ABCDEFGHIJKLMNOPQRSTUVWXYZ.txt</option>
+                        <option>Data-Logger-03.txt</option>
+                        <option>Data-Logger-04.txt</option>
+                        <option>Data-Logger-05.txt</option>
+                        <option>Data-Logger-06.txt</option> -->
+                    </select>
+                    <button class="uk-button uk-button-primary" onclick="">Apply</button>
+                    <a class="uk-button uk-button-default uk-margin-left"  onclick="exceldown()">Excel</a>
+                </div>
+            </div>
+
+            <!-- table -->
+            <div class="uk-overflow-auto uk-margin-medium-top data-tb">
+                <table class="uk-table uk-table-small uk-table-divider fml-lh js-filter" id="data-list">
+                    <thead>
+                        <tr>
+                            <th class="w-150" >Data No.</th>
+                            <!-- <th class="w-82">Data No.</th> -->
+                            <th class="mw-200">센서명</th>
+                            <th class="w-80 uk-text-center">그룹타입</th>
+                            <th class="w-80 uk-text-center">데이터 구분</th>
+                            <th class="w-150">설치지점</th>
+                            <th class="w-150">센서그룹</th>
+                            <th class="w-50 uk-text-center">공식</th>
+                            <th class="w-50 uk-text-center">가이드</th>
+                            <th class="w-50 uk-text-center">치환</th>
+                            <th class="w-50 uk-text-center">알림</th>
+                            <th class="w-100 uk-text-center">상태</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbl_tbody">
+                        <!-- <tr>
+                            <td>1</td>
+                            <td>ABCDEFGHIJK<a href="/ws-10-6-1" class="uk-icon-link uk-margin-small-left" uk-icon="pencil" uk-toggle></a></td>
+                            <td class="uk-text-center">x</td>
+                            <td>가나다라마바사아자</td>
+                            <td></td>
+                            <td class="uk-text-center"><span class="icon-guideline-d"></span></td>
+                            <td class="uk-text-center"><span class="icon-guideline-d"></span></td>
+                            <td class="uk-text-center"><span class="icon-guideline-d"></span></td>
+                            <td class="uk-text-center"><span class="icon-guideline-d"></span></td>
+                            <td class="uk-text-center">신규</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>ABCDEFGHIJK<a href="/ws-10-6-1" class="uk-icon-link uk-margin-small-left" uk-icon="pencil" uk-toggle></a></td>
+                            <td class="uk-text-center">y</td>
+                            <td>가나다라마바사아자</td>
+                            <td>가나다라마바사아자</td>
+                            <td class="uk-text-center"><span class="icon-guideline-b"></span></td>
+                            <td class="uk-text-center"><span class="icon-guideline-b"></span></td>
+                            <td class="uk-text-center"><span class="icon-guideline-b"></span></td>
+                            <td class="uk-text-center"><span class="icon-guideline-d"></span></td>
+                            <td class="uk-text-center">등록중</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>ABCDEFGHIJK<a href="/ws-10-6-1" class="uk-icon-link uk-margin-small-left" uk-icon="pencil" uk-toggle></a></td>
+                            <td class="uk-text-center">single</td>
+                            <td>가나다라마바사아자</td>
+                            <td>가나다라마바사아자</td>
+                            <td class="uk-text-center"><span class="icon-guideline-b"></span></td>
+                            <td class="uk-text-center"><span class="icon-guideline-b"></span></td>
+                            <td class="uk-text-center"><span class="icon-guideline-b"></span></td>
+                            <td class="uk-text-center"><span class="icon-guideline-b"></span></td>
+                            <td class="uk-text-center uk-text-blue">완료</td>
+                        </tr> -->
+                    </tbody> 
+                </table>
+            </div>
+
+            <!-- pagenation -->
+            <div class="uk-margin-medium-top">
+                <ul class="uk-pagination uk-flex-center" uk-margin id="pagenation">
+                    <!-- <li><a href="#"><span uk-pagination-previous></span></a></li>
+                    <li><a href="#">1</a></li>
+                    <li class="uk-disabled"><span>...</span></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">6</a></li>
+                    <li class="uk-active"><span>7</span></li>
+                    <li><a href="#">8</a></li>
+                    <li><a href="#"><span uk-pagination-next></span></a></li> -->
+                </ul>
+            </div>
+
+
+        </div>
+    </div>
+    <!--// Right / Body -->
+
+</body>
+
+
+
+
+
+<!-- Modal / Sensor Batch -->
+<div id="sensor-batch" class="uk-modal-container" uk-modal >
+    <div class="uk-modal-dialog uk-modal-body">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <h2 class="uk-modal-title">센서 일괄설정</h2>
+        <div class="uk-panel uk-panel-scrollable">
+
+            <!-- Sensors -->
+            <div class="uk-child-width-expand@s" uk-grid id="dataroggerSensorList">
+
+                <!-- #Data Logger 01 -->
+                <!-- <div class="li-none">
+                    <ul class="uk-list li-none">
+                        <li>
+                            <label><input class="uk-checkbox" type="checkbox"><span class="mg-l-10">Data-Logger-01.txt</span></label>
+                            <ul>
+                                <li><label><input class="uk-checkbox" type="checkbox"><span class="mg-l-10">센서 #01</span></label></li>
+                                <li><label><input class="uk-checkbox" type="checkbox"><span class="mg-l-10">센서 #02</span></label></li>
+                                <li><label><input class="uk-checkbox" type="checkbox"><span class="mg-l-10">센서 #03</span></label></li>
+                                <li><label><input class="uk-checkbox" type="checkbox"><span class="mg-l-10">센서 #01</span></label></li>
+                                <li><label><input class="uk-checkbox" type="checkbox"><span class="mg-l-10">센서 #02</span></label></li>
+                                <li><label><input class="uk-checkbox" type="checkbox"><span class="mg-l-10">센서 #03</span></label></li>
+                                <li><label><input class="uk-checkbox" type="checkbox"><span class="mg-l-10">센서 #01</span></label></li>
+                                <li><label><input class="uk-checkbox" type="checkbox"><span class="mg-l-10">센서 #02</span></label></li>
+                                <li><label><input class="uk-checkbox" type="checkbox"><span class="mg-l-10">센서 #03</span></label></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div> -->
+
+                <!-- #Data Logger 02 -->
+                <!-- <div class="li-none">
+                    <ul class="uk-list li-none">
+                        <li>
+                            <label><input class="uk-checkbox" type="checkbox"><span class="mg-l-10">Data-Logger-02.txt</span></label>
+                            <ul>
+                                <li><label><input class="uk-checkbox" type="checkbox"><span class="mg-l-10">센서 #01</span></label></li>
+                                <li><label><input class="uk-checkbox" type="checkbox"><span class="mg-l-10">센서 #02</span></label></li>
+                                <li><label><input class="uk-checkbox" type="checkbox"><span class="mg-l-10">센서 #03</span></label></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div> -->
+
+                <!-- #Data Logger 03 -->
+                <!-- <div class="li-none">
+                    <ul class="uk-list li-none">
+                        <li>
+                            <label><input class="uk-checkbox" type="checkbox"><span class="mg-l-10">Data-Logger-03.txt</span></label>
+                            <ul>
+                                <li><label><input class="uk-checkbox" type="checkbox"><span class="mg-l-10">센서 #01</span></label></li>
+                                <li><label><input class="uk-checkbox" type="checkbox"><span class="mg-l-10">센서 #02</span></label></li>
+                                <li><label><input class="uk-checkbox" type="checkbox"><span class="mg-l-10">센서 #03</span></label></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div> -->
+
+            
+
+
+            </div>
+        </div>
+        <div class="uk-margin-small-top">
+            <span class="uk-align-right ft-count-index">선택된 센서<span class="title-id uk-text-blue ft-count" id="selected_sensor">0</span></span>
+        </div>
+
+        <!-- Setting -->
+        <h5>설치장소 및 그룹</h5>
+        <div class="uk-child-width-expand@s" uk-grid>
+            <div class="uk-margin uk-form-horizontal mg-t-20">
+                <label class="uk-form-label" for="">설치장소</label>
+                <div class="uk-form-controls">
+                    <select class="uk-select w-100p" id="place">
+                        <option selected="">선택</option>
+                        <!-- <option>차량기지</option>
+                        <option>진입도로</option>
+                        <option>서해연결선</option> -->
+                    </select>
+                </div>
+            </div>
+            <div class="uk-margin uk-form-horizontal">
+                <label class="uk-form-label" for="">센서그룹</label>
+                <div class="uk-form-controls">
+                    <select class="uk-select w-100p"  id="sensorgroup">
+                        <option selected="">선택</option>
+                        <!-- <option>도상침하계 상</option>
+                        <option>도상침하계 하</option> -->
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- Setting -->
+        <div class="uk-margin-top uk-child-width-expand@s" uk-grid>
+            <!-- left -->
+            <div>
+                <h5>가이드라인</h5>
+                <form class="uk-form-horizontal" id="formdata">
+                    <div class="uk-margin">
+                        <label class="uk-form-label uk-text-yellow" for="">Level 1 Max ( ± Scatter )</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="form-horizontal-text" type="text" name="sensor_gl1_max" placeholder="" doubleOnly value="0.05">
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label uk-text-yellow" for="">Level 1 Min</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="form-horizontal-text" type="text" name="sensor_gl1_min" placeholder="" doubleOnly value="-0.05">
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label uk-text-orange" for="">Level 2 Max ( ± Scatter )</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="form-horizontal-text" type="text" name="sensor_gl2_max" placeholder="" doubleOnly value="0.1">
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label uk-text-orange" for="">Level 2 Min</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="form-horizontal-text" type="text" name="sensor_gl2_min" placeholder="" doubleOnly value="-0.1">
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label uk-text-red" for="">Level 3 Max ( ± Scatter )</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="form-horizontal-text" type="text" name="sensor_gl3_max" placeholder="" doubleOnly value="0.15">
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label uk-text-red" for="">Level 3 Min</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="form-horizontal-text" type="text" name="sensor_gl3_min" placeholder="" doubleOnly value="-0.15">
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- right -->
+            <div>
+                <h5>변위공식</h5>
+                <form class="uk-form-horizontal">
+
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="">Formula 1</label>
+                        <div class="uk-form-controls">
+                            <select class="uk-select w-100p" id="fomula01">
+                                <option selected="" value="">선택</option>
+                                <!-- <option>변화량 1 (MM)</option>
+                                <option>변화량 2 (MM)</option> -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="">Formula 2</label>
+                        <div class="uk-form-controls">
+                            <select class="uk-select w-100p" id="fomula02">
+                                <option selected="" value="">선택</option>
+                                <!-- <option>변화량 1 (MM)</option>
+                                <option>변화량 2 (MM)</option> -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="">Formula 3</label>
+                        <div class="uk-form-controls">
+                            <select class="uk-select w-100p" id="fomula03">
+                                <option selected="" value="">선택</option>
+                                <!-- <option>변화량 1 (MM)</option>
+                                <option>변화량 2 (MM)</option> -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="">Formula 4</label>
+                        <div class="uk-form-controls">
+                            <select class="uk-select w-100p" id="fomula04">
+                                <option selected="" value="">선택</option>
+                                <!-- <option>변화량 1 (MM)</option>
+                                <option>변화량 2 (MM)</option> -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="">Formula 5</label>
+                        <div class="uk-form-controls">
+                            <select class="uk-select w-100p" id="fomula05">
+                                <option selected="" value="">선택</option>
+                                <!-- <option>변화량 1 (MM)</option>
+                                <option>변화량 2 (MM)</option> -->
+                            </select>
+                        </div>
+                    </div>
+                    
+                </form>
+            </div>
+            
+        </div>
+
+        <hr>
+
+        <!-- Setting -->
+        <div class="uk-margin-top uk-child-width-expand@s" uk-grid>
+
+            <!-- left -->
+            <div>
+                <h5>데이타 치환 방법</h5>
+                <form class="uk-form-horizontal">
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="">치환 상한 기준값 ( + )</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="sensor_max" id="form-horizontal-text" type="text" placeholder="" doubleOnly>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="">치환 하안 기준값 ( - )</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="sensor_min" id="form-horizontal-text" type="text" placeholder="" doubleOnly>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="">변화량 가중치 ( * -0.1 )</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="sensor_weight" id="form-horizontal-text" type="text" placeholder="" doubleOnly>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="">측정값 편차범위 ( ± )</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input"  id="sensor_deviation" id="form-horizontal-text" type="text" placeholder="" doubleOnly>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- right -->
+            <div>
+                <h5>적용 방법</h5>
+                <div class="uk-margin uk-margin-small-top">
+                    <label><input class="uk-checkbox" type="checkbox" id="sensor_st_over_ex"><span class="mg-l-10">기준값 초과/미만 시 이전 데이터로 치환</span></label>
+                </div>
+                <div class="uk-margin">
+                    <label><input class="uk-checkbox" type="checkbox" id="sensor_st_over_wt"><span class="mg-l-10">기준값 초과/미만 시 변화량 가중치 적용</span></label>
+                </div>
+                <div class="uk-margin uk-margin-small-top">
+                    <label><input class="uk-checkbox" type="checkbox" id="sensor_dev_over_ex"><span class="mg-l-10">편차범위 초과/미만 시 이전 데이터로 치환</span></label>
+                </div>
+                <div class="uk-margin uk-margin-small-top">
+                    <label><input class="uk-checkbox" type="checkbox" id="sensor_dev_over_wt"><span class="mg-l-10">편차범위 초과/미만 시 변화량 가중치 적용</span></label>
+                </div>
+                <div class="uk-margin">
+                    <label><input class="uk-checkbox" type="checkbox" id="sensor_null_ex"><span class="mg-l-10">Null인 경우 이전 데이터로 치환</span></label>
+                </div>
+                <div class="uk-margin">
+                    <label><input class="uk-checkbox" type="checkbox" id="sensor_default_wt"><span class="mg-l-10">변화량 가중치 기본 적용</span></label>
+                </div>
+            </div>
+
+        </div>
+
+        <hr>
+
+        <!-- Setting -->
+        <div class="uk-margin-top uk-child-width-expand@s" uk-grid>
+
+            <!-- left -->
+            <div>
+                <h5>담당자</h5>
+                <div class="uk-margin uk-form-horizontal mg-t-20">
+                    <label class="uk-form-label" for="">알림설정</label>
+                    <div class="uk-form-controls">
+                        <select class="uk-select w-100p" id="sensor_noti">
+                            <!-- <option selected="" value="None" >선택</option> -->
+                            <option selected="" value="N">사용안함</option>
+                            <option value="Y">자동알림</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- right -->
+            <div>
+            </div>
+
+        </div>
+
+        <hr>
+
+        <div class="uk-modal-footer uk-text-right">
+            <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+            <button class="uk-button uk-button-primary" type="button" id="btn_apply">Apply</button>
+        </div>
+    </div>
+</div>
+
+<script src="/static/js/ws/ws-10-6.js"></script>
+</html>

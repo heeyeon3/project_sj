@@ -1,0 +1,651 @@
+<!-- ws-04-1.html -->
+{% include "ws/ws-header.html" %}
+{% include "ws/ws-leftmenu.html" %}
+
+    <!-- Right / Body -->
+    <div class="tm-main">
+        <div class="uk-container-full uk-position-relative">
+
+            <!-- title -->
+            <div>
+                <h4 class="uk-heading-divider" id="topsensername"></h4>
+            </div>
+
+            <!-- date & time picker -->
+            <div class="uk-margin uk-flex uk-flex-left uk-flex-row">
+                <div>
+                    <span class="ft-w" style="line-height: 40px;">Data Filter</span>
+                </div>
+                <div class="uk-margin-left">
+                    <div class="uk-inline">
+                        <span class="uk-form-icon uk-icon" uk-icon="icon: calendar"><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M 2,3 2,17 18,17 18,3 2,3 Z M 17,16 3,16 3,8 17,8 17,16 Z M 17,7 3,7 3,4 17,4 17,7 Z"></path><rect width="1" height="3" x="6" y="2"></rect><rect width="1" height="3" x="13" y="2"></rect></svg></span>
+                        <input class="uk-input" type="text" id="date_time_start">
+                    </div>
+                </div>
+                <div class="uk-margin-left">
+                    <div class="uk-inline">
+                        <span class="uk-form-icon uk-icon" uk-icon="icon: calendar"><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M 2,3 2,17 18,17 18,3 2,3 Z M 17,16 3,16 3,8 17,8 17,16 Z M 17,7 3,7 3,4 17,4 17,7 Z"></path><rect width="1" height="3" x="6" y="2"></rect><rect width="1" height="3" x="13" y="2"></rect></svg></span>
+                        <input class="uk-input" type="text" id="date_time_end">
+                    </div>
+                </div>
+                <div class="uk-margin-left">
+                    <span style="line-height: 40px;"></span>
+                </div>
+                <div class="uk-margin-left">
+                    <select class="uk-select w-100" id="time">
+                        <option selected="" value="">시각</option>
+                        <option value="01">1시</option>
+                        <option value="02">2시</option>
+                        <option value="03">3시</option>
+                        <option value="04">4시</option>
+                        <option value="05">5시</option>
+                        <option value="06">6시</option>
+                        <option value="07">7시</option>
+                        <option value="08">8시</option>
+                        <option value="09">9시</option>
+                        <option value="10">10시</option>
+                        <option value="11">11시</option>
+                        <option value="12">12시</option>
+                        <option value="13">13시</option>
+                        <option value="14">14시</option>
+                        <option value="15">15시</option>
+                        <option value="16">16시</option>
+                        <option value="17">17시</option>
+                        <option value="18">18시</option>
+                        <option value="19">19시</option>
+                        <option value="20">20시</option>
+                        <option value="21">21시</option>
+                        <option value="22">22시</option>
+                        <option value="23">23시</option>
+                        <option value="00">24시</option>
+                    </select>
+                </div>
+                <div class="">
+                    <span style="line-height: 40px;"></span>
+                </div>
+                <div class="uk-margin-left">
+                    <select class="uk-select w-100" id="intervalday">
+                        <option selected="" value="">평균</option>
+                        <option value="1">1일</option>
+                        <option value="2">2일</option>
+                        <option value="3">3일</option>
+                        <option value="4">4일</option>
+                        <option value="5">5일</option>
+                        <option value="6">6일</option>
+                        <option value="7">7일</option>
+                        <option value="8">8일</option>
+                        <option value="9">9일</option>
+                        <option value="10">10일</option>
+                        <option value="11">11일</option>
+                        <option value="12">12일</option>
+                        <option value="13">13일</option>
+                        <option value="14">14일</option>
+                        <option value="15">15일</option>
+                    </select>
+                </div>
+                <div class="uk-margin-left">
+                    <button class="uk-button uk-button-primary" type="button" onclick="searchdata()">Apply</button>
+                    <button class="uk-button uk-button-primary" type="button" onclick="resetbtn()">Reset</button>
+                </div>
+            </div>
+
+            <!-- tap menu / sensor group - line type (load cell)-->
+            <div class="uk-margin uk-margin-medium-top">
+                <ul class="uk-tab">
+                    <li><a id="linechart" onclick="chartlocation()">Line Chart</a></li>
+                    <li class="uk-active"><a id="timelinechart" onclick="timelinelocation()">Timeline Chart</a></li>
+                    <li><a id="data" onclick="datalocation()">Data<span class="uk-badge-orange" style="display: none;" id="dataalarm">231</span></a></li>
+                    <li id="fomulali" style="display: none;"><a id="formula_btn" style="display: none;" onclick="fomulalocation()">Formula</a></li>
+                    <li><a id="info" onclick="infolocation()">Info</a></li>
+                </ul>
+            </div>
+
+            <!-- chart / sensor group -->
+            <div uk-margin="" class="uk-flex uk-flex-row uk-flex-between">
+                <div class="uk-text-blue uk-first-column">
+                    <!-- <h4>변화량 (mm) </h4> -->
+                    <p id="sensorgroupinitail">Initial Date: </p>
+                </div>
+                <div>
+                    <a class="uk-button uk-button-default" href="#guideline" uk-toggle onclick="guideline()" id="guideline_btn" style="display: none;">Guideline<a>
+                        <a class="uk-button uk-button-default" href="#initial" uk-toggle id="initaildate_btn" style="display: none;">Initial Date</a>
+                </div>
+            </div>
+
+            <!-- Chart / Senser Group -->
+            <div class="uk-margin-medium-top">
+                <canvas id="sensors" style="height: 700px; display: block; box-sizing: border-box; width: 1069px;" width="2138" height="1400"></canvas>
+            </div>
+            <div class="mg-t-20">
+                <button class="uk-button uk-button-default" onclick="resetZoomChart()">Reset Zoom</button>
+                <button class="uk-button uk-button-default" onclick="chartZoom(1.1)">Zoom In</button>
+                <button class="uk-button uk-button-default" onclick="chartZoom(0.9)">Zoom Out</button>
+            </div>
+
+            <!-- Chart / Weather  -->
+            <div class="uk-text-blue uk-margin-medium-top">
+                <h4>날씨</h4>
+            </div>
+            <div class="uk-margin-small-top">
+                <canvas id="weather" style="height: 300px; display: block; box-sizing: border-box; width: 1069px;" width="2138" height="400"></canvas>
+            </div>
+
+        </div>
+    </div>
+    <!--// Right / Body -->
+
+
+
+<!-- Modal / guideline -->
+<div id="guideline" uk-modal>
+    <div class="uk-modal-dialog">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <div class="uk-modal-header">
+            <h5 class="uk-modal-title">Guideline</h5>
+            <p class="uk-text-meta" id="sensorname">
+               
+            </p>
+        </div>
+        <div class="uk-modal-body">
+            <form class="uk-form-horizontal uk-margin-large" id="guideLineminmax">
+
+                <div class="uk-margin">
+                    <label class="uk-form-label uk-text-yellow" for="form-horizontal-text">Level 1 Max / Min</label>
+                    <div class="uk-form-controls">
+                        <input class="uk-input" id="sensor_gl1_max" name="sensor_gl1_max" type="text" placeholder="" doubleOnly>
+                    </div>
+                </div>
+                <hr>
+                <div class="uk-margin">
+                    <label class="uk-form-label uk-text-orange" for="form-horizontal-text">Level 2 Max / Min</label>
+                    <div class="uk-form-controls">
+                        <input class="uk-input" id="sensor_gl2_max" name="sensor_gl2_max" type="text" placeholder="" doubleOnly>
+                    </div>
+                </div>
+                <hr>
+                <div class="uk-margin">
+                    <label class="uk-form-label uk-text-red" for="form-horizontal-text">Level 3 Max / Min</label>
+                    <div class="uk-form-controls">
+                        <input class="uk-input" id="sensor_gl3_max" name="sensor_gl3_max" type="text" placeholder="" doubleOnly>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="uk-modal-footer uk-text-right">
+            <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+            <button class="uk-button uk-button-primary" type="button" onclick="guidelinesave()">Save</button>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal / Initial Date -->
+<div id="initial" uk-modal>
+    <div class="uk-modal-dialog">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <div class="uk-modal-header">
+            <h5 class="uk-modal-title">Initial Date</h5>
+            <p class="uk-text-meta" id="initialsensorname">
+                <!-- 도상침하계(상-X축) -->
+            </p>
+        </div>
+        <div class="uk-modal-body">
+            <form>
+                <div class="uk-flex uk-flex-center">
+                    <div class="uk-inline uk-margin">
+                        <span class="uk-form-icon" uk-icon="icon: calendar"></span>
+                        <input class="uk-input w-picker" type="text" id="initial_datetime">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="uk-modal-footer uk-text-right">
+            <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+            <button class="uk-button uk-button-primary" type="button" id="initialsavebtn" >Save</button>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Modal / Formula -->
+<div id="formula" uk-modal="" class="uk-modal">
+    <div class="uk-modal-dialog">
+        <button class="uk-modal-close-default uk-icon uk-close" type="button" uk-close=""><svg width="14" height="14" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg"><line fill="none" stroke="#000" stroke-width="1.1" x1="1" y1="1" x2="13" y2="13"></line><line fill="none" stroke="#000" stroke-width="1.1" x1="13" y1="1" x2="1" y2="13"></line></svg></button>
+        <div class="uk-modal-header">
+            <h5 class="uk-modal-title">Formula</h5>
+            <p class="uk-text-meta">도상침하계(상-X축)</p>
+
+        </div>
+        <div class="uk-modal-body">
+            <form class="uk-form-horizontal uk-margin-large">
+                <div class="uk-margin" uk-margin="">
+                    <p>변화량(mm)</p>
+                </div>
+                <hr>
+                <div class="uk-margin" uk-margin="">
+                    <label class="uk-form-label" for="form-horizontal-select">가중치 (%)</label>
+                    <div uk-form-custom="target: true" class="uk-form-custom">
+                        <input class="uk-input uk-form-width-medium" type="text" placeholder="">
+                    </div>
+                    <button class="uk-button uk-button-default">Default</button>
+                </div>
+                <hr>
+                <div class="uk-margin" uk-margin="">
+                    <label class="uk-form-label" for="form-horizontal-select">상수 (100 ~ 500)</label>
+                    <div uk-form-custom="target: true" class="uk-form-custom">
+                        <input class="uk-input uk-form-width-medium" type="text" placeholder="">
+                    </div>
+                    <button class="uk-button uk-button-default">Default</button>
+                </div>
+                <hr>
+                <div class="uk-margin" uk-margin="">
+                    <label class="uk-form-label" for="form-horizontal-select">변화량 (mm)</label>
+                    <div uk-form-custom="target: true" class="uk-form-custom">
+                        <input class="uk-input uk-form-width-medium" type="text" placeholder="">
+                    </div>
+                    <button class="uk-button uk-button-default">Default</button>
+                </div>
+            </form>
+        </div>
+        <div class="uk-modal-footer uk-text-right">
+            <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+            <button class="uk-button uk-button-primary" type="button">Save</button>
+        </div>
+    </div>
+</div>
+
+
+<!-- chart / sensor group -->
+<script>
+    // const colors = [
+    // '#1e87f0', '#5856d6', '#ff9500', '#ffcc00', '#ff3b30', '#5ac8fa', '#007aff', '#4cd964', '#aeff00', '#00ffe1',
+    // '#00ff62', '#0066ff', '#00ffd5', '#b2ff00', '#ffe100', '#00ff91', '#ff8000', '#1900ff', '#ff1500', '#00ffd0',
+    // '#73ff00', '#ff8800', '#e6ff00', '#0055ff', '#fffb00', '#2f00ff', '#00ff73', '#006eff', '#ffcc00', '#22ff00',
+    // '#ff2600', '#00aeff', '#b2ff00', '#8cff00', '#ffbb00', '#d9ff00', '#00aeff', '#ffa600', '#ff4d00', '#ccff00', 
+    // '#fbff00', '#ffe100', '#c3ff00', '#00ff88', '#00e5ff', '#ff4000', '#00ccff', '#00ddff', '#00ff19', '#0088ff',
+    // ];
+
+    // const color = [];
+    // for (k = 0; k < 100; k++) {
+    //     const r = Math.floor (Math.random () * 255);
+    //     const g = Math.floor (Math.random () * 255);
+    //     const b = Math.floor (Math.random () * 255);
+    //     color.push('rgba('+r+', '+g+','+b+', 1)')
+    // }
+
+    // const labels = ['2021.10.01 21:00', '2021.10.02 21:00' ,'2021.10.03 21:00', '2021.10.04 21:00', '2021.10.05 21:00', '2021.10.06 21:00', '2021.10.07 21:00'];
+    // const datasets = [
+    // {
+    //     label: '2M',
+    //     data: [0, -0.259, 0.280, 0.1, 0.256, 0.255, 0.240],
+    //     borderColor: colors[0],
+    //     pointBackgroundColor: colors[0],
+    //     pointHoverRadius: 6,
+    //     borderWidth: 2,
+    // },
+    // {
+    //     label: '4M',
+    //     data: [0, -0.26, 0.280, 0.12, 0.46, 0.255, 0.240],
+    //     borderColor: colors[1],
+    //     pointBackgroundColor: colors[1],
+    //     pointHoverRadius: 6,
+    //     borderWidth: 2,
+    // },
+    // {
+    //     label: '6M',
+    //     data: [0, -0.258, 0.280, 0.13, 0.44, 0.255, 0.240],
+    //     borderColor: colors[2],
+    //     pointBackgroundColor: colors[2],
+    //     pointHoverRadius: 6,
+    //     borderWidth: 2,
+    // },
+    // {
+    //     label: '8M',
+    //     data: [0, -0.257, 0.280, 0.14, 0.43, 0.255, 0.240],
+    //     borderColor: colors[3],
+    //     pointBackgroundColor: colors[3],
+    //     pointHoverRadius: 6,
+    //     borderWidth: 2,
+    // },
+    // {
+    //     label: '10M',
+    //     data: [0, -0.256, 0.280, 0.15, 0.42, 0.255, 0.240],
+    //     borderColor: colors[4],
+    //     pointBackgroundColor: colors[4],
+    //     pointHoverRadius: 6,
+    //     borderWidth: 2,
+    // },
+    // {
+    //     label: '12M',
+    //     data: [0, -0.255, 0.280, 0.16, 0.41, 0.255, 0.240],
+    //     borderColor: colors[5],
+    //     pointBackgroundColor: colors[5],
+    //     pointHoverRadius: 6,
+    //     borderWidth: 2,
+    // },
+    // {
+    //     label: '14M',
+    //     data: [0, -0.254, 0.280, 0.17, 0.40, 0.255, 0.240],
+    //     borderColor: colors[6],
+    //     pointBackgroundColor: colors[6],
+    //     pointHoverRadius: 6,
+    //     borderWidth: 2,
+    // },
+    // {
+    //     label: '16M',
+    //     data: [0, -0.253, 0.17, 0.18, 0.39, 0.255, 0.240],
+    //     borderColor: colors[7],
+    //     pointBackgroundColor: colors[7],
+    //     pointHoverRadius: 6,
+    //     borderWidth: 2,
+    // },
+    // {
+    //     label: '18M',
+    //     data: [0, -0.252, 0.18, 0.19, 0.38, 0.255, 0.240],
+    //     borderColor: colors[8],
+    //     pointBackgroundColor: colors[8],
+    //     pointHoverRadius: 6,
+    //     borderWidth: 2,
+    // },
+    // {
+    //     label: '20M',
+    //     data: [0, -0.251, 0.19, 0.20, 0.37, 0.255, 0.240],
+    //     borderColor: colors[9],
+    //     pointBackgroundColor: colors[9],
+    //     pointHoverRadius: 6,
+    //     borderWidth: 2,
+    // },
+    // {
+    //     label: '22M',
+    //     data: [0, -0.250, 0.20, 0.21, 0.36, 0.255, 0.240],
+    //     borderColor: colors[8],
+    //     pointBackgroundColor: colors[8],
+    //     pointHoverRadius: 6,
+    //     borderWidth: 2,
+    // },
+    // {
+    //     label: '24M',
+    //     data: [0, -0.249, 0.21, 0.22, 0.35, 0.255, 0.240],
+    //     borderColor: colors[9],
+    //     pointBackgroundColor: colors[9],
+    //     pointHoverRadius: 6,
+    //     borderWidth: 2,
+    // }
+    // ];
+
+    // const chart = new Chart('sensors', {
+    //     type: 'line',
+    //     data: {
+    //         labels: labels,
+    //         datasets: datasets,
+    //     },
+    //     options: {
+    //         maintainAspectRatio: false,
+    //         scales: {
+    //             x: {
+    //                 grid: {
+    //                     color: '#222',
+    //                 }
+    //             },
+    //             y: {
+    //                 grid: {
+    //                     color: '#222',
+    //                 }
+    //             }
+    //         },
+    //         plugins: {
+    //             tooltip: {
+    //                 padding: 10,
+    //                 cornerRadius: 0,
+    //                 bodySpacing: 4,
+    //                 titleSpacing: 10,
+    //                 //multiKeyBackground: '#00000000',
+    //                 displayColors: false,
+    //             },
+    //             legend: {
+    //                 position: 'bottom',
+    //                 align: 'start',
+    //                 padding: 20,
+    //                 labels: {
+    //                     boxWidth: 12,
+    //                     padding: 20,
+    //                 }
+    //             },
+    //             annotation: {
+    //                 annotations: {
+    //                     line1: { // Guideline Lv.1 Max
+    //                         type: 'line',
+    //                         yMin: 1,
+    //                         yMax: 1,
+    //                         borderColor: '#FFD60A',
+    //                         borderWidth: 1,
+    //                         borderDash: [2, 2],
+    //                         label: {
+    //                             enabled: true,
+    //                             position: "end",
+    //                             cornerRadius: 0,
+    //                             backgroundColor: '#191919',
+    //                             content: 'Lv.1 Max',
+    //                             color: '#666',
+    //                             font: {
+    //                                 style: 'normal',
+    //                             }
+    //                         }
+    //                     },
+    //                     line2: { // Guideline Lv.1 Min
+    //                         type: 'line',
+    //                         yMin: -1,
+    //                         yMax: -1,
+    //                         borderColor: '#FFD60A',
+    //                         borderWidth: 1,
+    //                         borderDash: [2, 2],
+    //                         label: {
+    //                             enabled: true,
+    //                             position: "end",
+    //                             cornerRadius: 0,
+    //                             backgroundColor: '#191919',
+    //                             content: 'Lv.1 Min',
+    //                             color: '#666',
+    //                             font: {
+    //                                 style: 'normal',
+    //                             }
+    //                         }
+    //                     },
+    //                     line3: { // Guideline Lv.2 Max
+    //                         type: 'line',
+    //                         yMin: 1.5,
+    //                         yMax: 1.5,
+    //                         borderColor: '#FF9F0A',
+    //                         borderWidth: 1,
+    //                         borderDash: [2, 2],
+    //                         label: {
+    //                             enabled: true,
+    //                             position: "end",
+    //                             cornerRadius: 0,
+    //                             backgroundColor: '#191919',
+    //                             content: 'Lv.2 Max',
+    //                             color: '#666',
+    //                             font: {
+    //                                 style: 'normal',
+    //                             }
+    //                         }
+    //                     },
+    //                     line4: { // Guideline Lv.2 Min
+    //                         type: 'line',
+    //                         yMin: -1.5,
+    //                         yMax: -1.5,
+    //                         borderColor: '#FF9F0A',
+    //                         borderWidth: 1,
+    //                         borderDash: [2, 2],
+    //                         label: {
+    //                             enabled: true,
+    //                             position: "end",
+    //                             cornerRadius: 0,
+    //                             backgroundColor: '#191919',
+    //                             content: 'Lv.2 Min',
+    //                             color: '#666',
+    //                             font: {
+    //                                 style: 'normal',
+    //                             }
+    //                         }
+    //                     },
+    //                     line5: { // Guideline Lv.3 Max
+    //                         type: 'line',
+    //                         yMin: 2,
+    //                         yMax: 2,
+    //                         borderColor: '#FF453A',
+    //                         borderWidth: 1,
+    //                         borderDash: [2, 2],
+    //                         label: {
+    //                             enabled: true,
+    //                             position: "end",
+    //                             cornerRadius: 0,
+    //                             backgroundColor: '#191919',
+    //                             content: 'Lv.3 Max',
+    //                             color: '#666',
+    //                             font: {
+    //                                 style: 'normal',
+    //                             }
+    //                         }
+    //                     },
+    //                     line6: { // Guideline Lv.3 Min
+    //                         type: 'line',
+    //                         yMin: -2,
+    //                         yMax: -2,
+    //                         borderColor: '#FF453A',
+    //                         borderWidth: 1,
+    //                         borderDash: [2, 2],
+    //                         label: {
+    //                             enabled: true,
+    //                             position: "end",
+    //                             cornerRadius: 0,
+    //                             backgroundColor: '#191919',
+    //                             content: 'Lv.3 Min',
+    //                             color: '#666',
+    //                             font: {
+    //                                 style: 'normal',
+    //                             }
+    //                         }
+    //                     },
+    //                     line7: { // Initial
+    //                         type: 'line',
+    //                         yMin: 0,
+    //                         yMax: 0,
+    //                         borderColor: '#1e87f0',
+    //                         borderWidth: 1,
+    //                         borderDash: [2, 2],
+    //                         label: {
+    //                             enabled: true,
+    //                             position: "end",
+    //                             cornerRadius: 0,
+    //                             backgroundColor: '#191919',
+    //                             content: 'Initial',
+    //                             color: '#1e87f0',
+    //                             font: {
+    //                                 style: 'normal',
+    //                             }
+    //                         }
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
+    // })
+</script>
+
+
+<!-- chart / weather -->
+<script>
+//     const wchart = new Chart('weather', {
+//         type: 'line',
+//         data: {
+//             labels: labels,
+//             datasets: [{
+//                 type: 'line',
+//                 label: '기온 ( ℃ )',
+//                 yAxisID: 'temp',
+//                 data: [21, 22, 21, 16, 21, 30, -30],
+//                 borderColor: '#FF9F0A',
+//                 pointBackgroundColor: '#FF9F0A',
+//                 pointHoverRadius: 6,
+//                 borderWidth: 2,
+//             }, {
+//                 type: 'line',
+//                 label: '강수량 ( mm )',
+//                 yAxisID: 'rain',
+//                 data: [0, 0, 100, 230, 50, 0, 0],
+//                 borderColor: '#00AFFF',
+//                 pointBackgroundColor: '#00AFFF',
+//                 pointHoverRadius: 6,
+//                 borderWidth: 2,
+//             }]
+//         },
+//         options: {
+//             scales: {
+//                 x: {
+//                     grid: {
+//                         color: '#222',
+//                     }
+//                 },
+//                 temp: {
+//                     type: 'linear',
+//                     display: true,
+//                     position: 'left',
+//                     grid: {
+//                         color: '#222',
+//                     },
+//                     ticks: {
+//                         color: 'rgba(255,159,10,.3)',
+//                     }
+//                 },
+//                 rain: {
+//                     type: 'linear',
+//                     display: true,
+//                     position: 'right',
+//                     grid: {
+//                       drawOnChartArea: false,
+//                   },
+//                   ticks: {
+//                     color: 'rgba(0,175,255,.3)',
+//                 }
+//             }   
+//         },
+//         maintainAspectRatio: false,
+//         plugins: {
+//             tooltip: {
+//                 padding: 10,
+//                 cornerRadius: 0,
+//                 bodySpacing: 4,
+//                 titleSpacing: 10,
+//                 multiKeyBackground: '#00000000',
+//                 displayColors: false,
+//             },
+//             legend: {
+//                 position: 'bottom',
+//                 align: 'start',
+//                 padding: 20,
+//                 labels: {
+//                     boxWidth: 12,
+//                     padding: 20,
+//                 }
+//             }
+//         }
+//     }
+// })
+</script>
+
+
+
+
+<!-- date & time picker -->
+<script>
+    $('#date_time_start').datetimepicker({theme:'dark', step:60, format:'Y.m.d H:i', maxDate:'0'});
+    $('#date_time_end').datetimepicker({theme:'dark', step:60, format:'Y.m.d H:i', maxDate:'0'});
+    $('#initial_datetime').datetimepicker({theme:'dark', step:60, format:'Y.m.d H:i', maxDate:'0'});
+</script>
+<script src="/static/js/ws/ws-02-1-14.js"></script>
+
+
+
+</body></html>
